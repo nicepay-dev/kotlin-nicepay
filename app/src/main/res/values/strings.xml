@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">NicepaySNAP</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="register">REGISTER</string>
+    <string name="login_email_hint">Name</string>
+    <string name="login_password_hint">Amount</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+
+    <string-array name="bankCode">
+        <item>BRIN</item>
+        <item>BNIN</item>
+        <item>CENA</item>
+        <item>BMRI</item>
+        <item>CIMB</item>
+        <item>Danamon</item>
+        <item>Maybank</item>
+        <item>BBBA</item>
+        <item>BBBB</item>
+        <item>BJB</item>
+        <item>BNC</item>
+    </string-array>
+
+    <string-array name="mitraCode">
+        <item>DANA</item>
+    </string-array>
+</resources>
