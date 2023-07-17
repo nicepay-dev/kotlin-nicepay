@@ -19,7 +19,7 @@
 
         <TextView
             style="@style/headerTextPrimary"
-            android:text="Virtual Account"
+            android:text="E-Wallet"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -31,7 +31,7 @@
                 style="@style/modifiedEditText"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:hint="@string/login_email_hint"/>
+                android:hint="@string/ewallet_goods_name"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -41,7 +41,7 @@
             <EditText
                     android:id="@+id/editTextAmount"
                     style="@style/modifiedEditText"
-                    android:hint="@string/login_password_hint"
+                    android:hint="@string/ewallet_amount"
                     android:maxLines="1"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,11 +55,11 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
         <Button
-                android:id="@+id/registerEwalletButton"
-                style="@style/loginButton"
-                android:text="Register"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/loginViewsMargin"/>
+            android:id="@+id/registerEwalletButton"
+            style="@style/loginButton"
+            android:text="Register"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/loginViewsMargin"/>
 
 
 

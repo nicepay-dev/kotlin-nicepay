@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.nicepaysnap.nicepay.data.util.nicepayLib
+import com.example.nicepaysnap.nicepay.data.util.EwalletSnapUtil
 import com.example.nicepaysnap.nicepay.model.additionalInfo
 import com.example.nicepaysnap.nicepay.model.totalAmount
 import com.example.nicepaysnap.nicepay.model.vaComponent
@@ -20,7 +20,7 @@ class Ewallet : AppCompatActivity() {
     lateinit var mitra: Spinner
     lateinit var pay: Button
     var responseVA = HashMap<String, String>()
-    var lib : nicepayLib = nicepayLib()
+    var register : EwalletSnapUtil = EwalletSnapUtil()
     var bOption : String? = "Select Mitra"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +58,7 @@ class Ewallet : AppCompatActivity() {
 
             val addInfo : additionalInfo = additionalInfo.Builder()
                 .setBankCd(bOption.toString())
-                .setGoodsNm("tes va")
+                .setGoodsNm("Testing E-wallet SNAP")
                 .setDbProcessUrl("https://ptsv2.com/t/test-nicepay-v2/post")
                 .build()
 
@@ -71,7 +71,7 @@ class Ewallet : AppCompatActivity() {
 
             lifecycleScope.launch {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    parseValue(lib.payment(vaForm))
+                    parseValue(register.payment(vaForm))
                 }
                 Toast.makeText(this@Ewallet,"your virtual account is " + responseVA.get("virtualAccountNo").toString(),
                     Toast.LENGTH_LONG).show()
