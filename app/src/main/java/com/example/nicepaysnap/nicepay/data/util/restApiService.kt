@@ -1,10 +1,7 @@
 package com.example.nicepaysnap.nicepay.data.util
 
 import android.util.Log
-import com.example.nicepaysnap.nicepay.model.accessData
-import com.example.nicepaysnap.nicepay.model.accessTokenResponse
-import com.example.nicepaysnap.nicepay.model.responseVaSNAP
-import com.example.nicepaysnap.nicepay.model.vaComponent
+import com.example.nicepaysnap.nicepay.model.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,6 +27,23 @@ class restApiService {
     fun generateVirtualAccount(headers: Map<String, String>,vaComponent: vaComponent, onResult: (responseVaSNAP?) -> Unit){
         val retrofit = retrofitClient.buildService(requestService::class.java)
         retrofit.generateVirtualAccount(headers, vaComponent).enqueue(
+            object : Callback<responseVaSNAP> {
+                override fun onFailure(call: Call<responseVaSNAP>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<responseVaSNAP>, response: Response<responseVaSNAP>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+                    val vaNumber = response.body()
+                    onResult(vaNumber)
+                }
+            }
+        )
+    }
+
+    fun generateEwalletDirectDebit(headers: Map<String, String>, request: RequestEwalletDirectDebit, onResult: (responseVaSNAP?) -> Unit){
+        val retrofit = retrofitClient.buildService(requestService::class.java)
+        retrofit.eWalletDirectDebit(headers, request).enqueue(
             object : Callback<responseVaSNAP> {
                 override fun onFailure(call: Call<responseVaSNAP>, t: Throwable) {
                     onResult(null)

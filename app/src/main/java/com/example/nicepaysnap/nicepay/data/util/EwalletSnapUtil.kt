@@ -3,6 +3,7 @@ package com.example.nicepaysnap.nicepay.data.util
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.nicepaysnap.nicepay.model.RequestEwalletDirectDebit
 import com.example.nicepaysnap.nicepay.model.accessData
 import com.example.nicepaysnap.nicepay.model.utilInformation
 import com.example.nicepaysnap.nicepay.model.vaComponent
@@ -20,7 +21,7 @@ class EwalletSnapUtil {
     var accTok : String? = ""
 
     @RequiresApi(Build.VERSION_CODES.O)
-    suspend fun payment(componentModel : vaComponent): HashMap<String, String> {
+    suspend fun register(request : RequestEwalletDirectDebit): HashMap<String, String> {
         var responseVA = HashMap<String, String>()
         getAccessToken().await()
         while(accTok.equals("")){
@@ -36,7 +37,7 @@ class EwalletSnapUtil {
         val ctime = Timestamp(System.currentTimeMillis())
         val dateTime = date.format(ctime)
 
-        val convertJsonString = Gson().toJson(componentModel)
+        val convertJsonString = Gson().toJson(request)
         val hashBody = encrypt.sha256EncodeHex(convertJsonString)?.lowercase()
 
         val dateFormated = SimpleDateFormat("yyyyMMddhhmmssXXX").format(System.currentTimeMillis())
@@ -55,10 +56,9 @@ class EwalletSnapUtil {
         headers["X-EXTERNAL-ID"] = utilInfo.clientKey + "" + dateFormated
         headers["X-PARTNER-ID"] = utilInfo.clientKey
 
-
-        Log.e("body request", componentModel.toString())
-        Log.e("body", componentModel.virtualAccountName.toString())
-        apiService.generateVirtualAccount(headers, componentModel) {
+        Log.e("body request", request.toString())
+        Log.e("body", request.toString())
+        apiService.generateEwalletDirectDebit(headers, request) {
             Log.e("response code : ", it?.responseCode.toString())
             if (it?.responseCode != null) {
                 responseVA = it?.toMap(HashMap()) as HashMap<String, String>

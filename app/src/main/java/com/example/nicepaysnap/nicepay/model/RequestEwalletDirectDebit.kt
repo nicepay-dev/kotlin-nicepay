@@ -1,6 +1,6 @@
 package com.example.nicepaysnap.nicepay.model
 
-class RequestEwalletPayment {
+class RequestEwalletDirectDebit {
 
     var partnerReferenceNo : String? = null
     var merchantId : String? = "IONPAYTEST"
@@ -32,6 +32,22 @@ class RequestEwalletPayment {
         this.subMerchantId = subMerchantId
         this.externalStoreId = externalStoreId
         this.validUpTo = validUpTo
+        this.pointOfInitiation = pointOfInitiation
+        this.amount = amount
+        this.urlParams = urlParams
+        this.additionalInfo = additionalInfo
+    }
+
+    constructor(
+        partnerReferenceNo: String?,
+        merchantId: String?,
+        pointOfInitiation: String?,
+        amount: totalAmount?,
+        urlParams: List<RequestEwalletUrlParam>?,
+        additionalInfo: RequestEWalletAdditionalInfo?
+    ) {
+        this.partnerReferenceNo = partnerReferenceNo
+        this.merchantId = merchantId
         this.pointOfInitiation = pointOfInitiation
         this.amount = amount
         this.urlParams = urlParams

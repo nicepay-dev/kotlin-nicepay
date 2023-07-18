@@ -27,7 +27,7 @@
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editTextGoodsName"
                 style="@style/modifiedEditText"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -39,7 +39,7 @@
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <EditText
-                    android:id="@+id/editTextAmount"
+                    android:id="@+id/editTextEwalletAmount"
                     style="@style/modifiedEditText"
                     android:hint="@string/ewallet_amount"
                     android:maxLines="1"/>
@@ -50,7 +50,7 @@
                     style="@style/parent"
                     android:layout_marginTop="@dimen/loginViewsMargin">
             <Spinner
-                android:id="@+id/spinnerBank"
+                android:id="@+id/spinnerMitra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>

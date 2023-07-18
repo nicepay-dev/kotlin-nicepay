@@ -1,9 +1,6 @@
 package com.example.nicepaysnap.nicepay.data.util
 
-import com.example.nicepaysnap.nicepay.model.accessData
-import com.example.nicepaysnap.nicepay.model.accessTokenResponse
-import com.example.nicepaysnap.nicepay.model.responseVaSNAP
-import com.example.nicepaysnap.nicepay.model.vaComponent
+import com.example.nicepaysnap.nicepay.model.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.HeaderMap
@@ -18,4 +15,8 @@ interface requestService {
     @Headers("Content-Type: application/json")
     @POST("api/v1.0/transfer-va/create-va")
     fun generateVirtualAccount(@HeaderMap headers: Map<String, String>, @Body vaComponent: vaComponent): Call<responseVaSNAP>;
+
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/transfer-va/create-va")
+    fun eWalletDirectDebit(@HeaderMap headers: Map<String, String>, @Body vaComponent: RequestEwalletDirectDebit): Call<responseVaSNAP>;
 }

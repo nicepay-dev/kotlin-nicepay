@@ -42,4 +42,24 @@ class RequestEWalletAdditionalInfo {
         this.mbFee = mbFee
         this.mbFeeType = mbFeeType
     }
+
+    constructor(
+        mitraCd: String?,
+        goodsNm: String?,
+        billingNm: String?,
+        billingPhone: String?,
+        dbProcessUrl: String?,
+        callBackUrl: String?,
+        cartData: String?,
+        msId: String?
+    ) {
+        this.mitraCd = mitraCd
+        this.goodsNm = goodsNm
+        this.billingNm = billingNm
+        this.billingPhone = billingPhone
+        this.dbProcessUrl = dbProcessUrl
+        this.callBackUrl = callBackUrl
+        this.cartData = cartData
+        this.msId = msId
+    }
 }

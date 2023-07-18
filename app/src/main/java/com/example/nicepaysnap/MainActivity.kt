@@ -55,6 +55,11 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
+                settingsFAB.setOnClickListener {
+                    val intent = Intent(this, Ewallet::class.java)
+                    startActivity(intent)
+                }
+
                 fabVisible = true
             } else {
                 homeFAB.hide()
