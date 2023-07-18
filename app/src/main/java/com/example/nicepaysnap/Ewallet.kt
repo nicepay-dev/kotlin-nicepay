@@ -69,6 +69,7 @@ class Ewallet : AppCompatActivity() {
                 "https://test2.bi.go.id/v1/test", "PAY_RETURN", "Y"
             )
 
+            if (goodsName == null || goodsName.text.toString() == "") goodsName.setText("Item Name")
             val additionalInfo = RequestEWalletAdditionalInfo(
                 bOption.toString(), goodsName.text.toString(), "Testing e-wallet SNAP for Android Simulation", "089876543210",
                 "http://ptsv2.com/t/dbProcess/post", "https://www.nicepay.co.id/IONPAY_CLIENT/paymentResult.jsp",
@@ -83,14 +84,17 @@ class Ewallet : AppCompatActivity() {
 
             lifecycleScope.launch {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    Log.i(this.toString() + " Request : ", ewalletRequest.toString())
-                    val response = parseValue(register.register(ewalletRequest))
-                    Log.i(this.toString() + " Response : ", response.toString())
-                }
-                val httpIntent = Intent(Intent.ACTION_VIEW)
-                httpIntent.setData(Uri.parse(responseEw.get("webRedirectUrl").toString()))
+                    if (amount.text.toString() == "") {
+                        Toast.makeText(applicationContext, "Amount must not be empty", Toast.LENGTH_SHORT).show()
+                    } else {
+                        val response = parseValue(register.register(ewalletRequest))
+                        Log.i(this.toString() + " Response : ", response.toString())
 
-                startActivity(httpIntent)
+                        val httpIntent = Intent(Intent.ACTION_VIEW)
+                        httpIntent.setData(Uri.parse(responseEw.get("webRedirectUrl").toString()))
+                        startActivity(httpIntent)
+                    }
+                }
             }
 
         }

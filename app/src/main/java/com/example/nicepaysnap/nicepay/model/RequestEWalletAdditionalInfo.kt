@@ -2,7 +2,7 @@ package com.example.nicepaysnap.nicepay.model
 
 class RequestEWalletAdditionalInfo {
     var mitraCd: String? = null
-    var goodsNm: String? = null
+    var goodsNm: String? = "Item Name"
     var billingNm: String? = null
     var billingPhone: String? = null
     var dbProcessUrl: String? = null
