@@ -1,5 +1,7 @@
 package com.example.nicepaysnap
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -8,17 +10,21 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.nicepaysnap.nicepay.data.util.EwalletSnapUtil
-import com.example.nicepaysnap.nicepay.model.*
+import com.example.nicepaysnap.nicepay.model.RequestEWalletAdditionalInfo
+import com.example.nicepaysnap.nicepay.model.RequestEwalletDirectDebit
+import com.example.nicepaysnap.nicepay.model.RequestEwalletUrlParam
+import com.example.nicepaysnap.nicepay.model.totalAmount
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+
 
 class Ewallet : AppCompatActivity() {
 
     lateinit var goodsName: EditText
     lateinit var amount: EditText
     lateinit var mitra: Spinner
-    lateinit var pay: Button
+    lateinit var regist: Button
     var responseEw = HashMap<String, String>()
     var register : EwalletSnapUtil = EwalletSnapUtil()
     var bOption : String? = "Select Mitra"
@@ -30,7 +36,7 @@ class Ewallet : AppCompatActivity() {
         goodsName = findViewById(R.id.editTextGoodsName)
         amount = findViewById(R.id.editTextEwalletAmount)
         mitra = findViewById(R.id.spinnerMitra)
-        pay = findViewById(R.id.registerEwalletButton)
+        regist = findViewById(R.id.registerEwalletButton)
 
         val mitraOption = resources.getStringArray(R.array.mitraCode)
 
@@ -51,7 +57,7 @@ class Ewallet : AppCompatActivity() {
             }
         }
 
-        pay.setOnClickListener {
+        regist.setOnClickListener {
             val amountValue : totalAmount = totalAmount.Builder()
                 .setValue(amount.text.toString().trim()+".00")
                 .build()
@@ -64,14 +70,14 @@ class Ewallet : AppCompatActivity() {
             )
 
             val additionalInfo = RequestEWalletAdditionalInfo(
-                mitra.toString(), goodsName.toString(), "Testing e-wallet SNAP for Android Simulation", "089876543210",
+                bOption.toString(), goodsName.text.toString(), "Testing e-wallet SNAP for Android Simulation", "089876543210",
                 "http://ptsv2.com/t/dbProcess/post", "https://www.nicepay.co.id/IONPAY_CLIENT/paymentResult.jsp",
-                "{\"count\":\"1\",\"item\":[{\"img_url\":\"http://img.aaa.com/ima1.jpg\",\"goods_name\":\"${goodsName}\",\"goods_detail\":\"Item Detail\",\"goods_amt\":${amountValue.toString().trim()+".00"},\"goods_quantity\":\"1\"}]}",
+                "{\"count\":\"1\",\"item\":[{\"img_url\":\"http://img.aaa.com/ima1.jpg\",\"goods_name\":\"${goodsName.text}\",\"goods_detail\":\"Item Detail\",\"goods_amt\":\"${amountValue.value}\",\"goods_quantity\":\"1\"}]}",
                 "data"
             )
 
             val ewalletRequest = RequestEwalletDirectDebit(
-                "ref-" + SimpleDateFormat("yyyyMMddhhmmssXXX").format(System.currentTimeMillis()),
+                "ref-" + SimpleDateFormat("yyyyMMddhhmmss").format(System.currentTimeMillis()),
                 "IONPAYTEST", "Mobile App", amountValue, listOf(urlParamNotify, urlParamReturn), additionalInfo
             )
 
@@ -81,8 +87,10 @@ class Ewallet : AppCompatActivity() {
                     val response = parseValue(register.register(ewalletRequest))
                     Log.i(this.toString() + " Response : ", response.toString())
                 }
-                Toast.makeText(this@Ewallet,"your virtual account is " + responseEw.get("webRedirectUrl").toString(),
-                    Toast.LENGTH_LONG).show()
+                val httpIntent = Intent(Intent.ACTION_VIEW)
+                httpIntent.setData(Uri.parse(responseEw.get("webRedirectUrl").toString()))
+
+                startActivity(httpIntent)
             }
 
         }

@@ -17,6 +17,6 @@ interface requestService {
     fun generateVirtualAccount(@HeaderMap headers: Map<String, String>, @Body vaComponent: vaComponent): Call<responseVaSNAP>;
 
     @Headers("Content-Type: application/json")
-    @POST("api/v1.0/transfer-va/create-va")
-    fun eWalletDirectDebit(@HeaderMap headers: Map<String, String>, @Body vaComponent: RequestEwalletDirectDebit): Call<responseVaSNAP>;
+    @POST("api/v1.0/debit/payment-host-to-host")
+    fun eWalletDirectDebit(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestEwalletDirectDebit): Call<ResponseEwalletSnap>;
 }

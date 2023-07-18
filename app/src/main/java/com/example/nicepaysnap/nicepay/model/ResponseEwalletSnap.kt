@@ -3,20 +3,20 @@ package com.example.nicepaysnap.nicepay.model
 import com.google.gson.annotations.SerializedName
 
 data class ResponseEwalletSnap(
-    @SerializedName("responseCode") var responseCode: String? = null,
-    @SerializedName("responseMessage") var responseMessage: String? = null,
-    @SerializedName("partnerReferenceNo") var partnerReferenceNo: String? = null,
-    @SerializedName("originalReferenceNo") var originalReferenceNo: String? = null,
-    @SerializedName("webRedirectUrl") var webRedirectUrl: String? = null
+    @SerializedName("responseCode") val responseCode: Int?,
+    @SerializedName("responseMessage") val responseMessage: String?,
+    @SerializedName("partnerReferenceNo") val partnerReferenceNo : String?,
+    @SerializedName("originalReferenceNo") val originalReferenceNo : String?,
+    @SerializedName("webRedirectUrl") val webRedirectUrl : String?
 ) {
 
-    fun toMap(hashMap: HashMap<Any, String>) : Map<String, String?> {
+    fun toMap(hashMap: HashMap<Any, Any>): Map<String, Any?> {
         return mapOf(
-            "responseCode" to this.responseCode,
-            "responseMessage" to this.responseMessage,
-            "partnerReferenceNo" to this.partnerReferenceNo,
-            "originalReferenceNo" to this.originalReferenceNo,
-            "webRedirectUrl" to this.webRedirectUrl
+            "responseCode" to responseCode,
+            "responseMessage" to responseMessage,
+            "partnerReferenceNo" to partnerReferenceNo,
+            "originalReferenceNo" to originalReferenceNo,
+            "webRedirectUrl" to webRedirectUrl
         )
     }
 

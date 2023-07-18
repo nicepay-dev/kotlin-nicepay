@@ -2,14 +2,14 @@ package com.example.nicepaysnap.nicepay.model
 
 class RequestEwalletDirectDebit {
 
-    var partnerReferenceNo : String? = null
+    var partnerReferenceNo : String? = "reference-test"
     var merchantId : String? = "IONPAYTEST"
-    var subMerchantId : String? = null
-    var externalStoreId : String? = null
-    var validUpTo : String? = null
-    var pointOfInitiation : String? = null
-    var amount: totalAmount? = null
-    var urlParams: List<RequestEwalletUrlParam>? = listOf(
+    var subMerchantId : String? = ""
+    var externalStoreId : String? = ""
+    var validUpTo : String? = ""
+    var pointOfInitiation : String? = ""
+    var amount : totalAmount? = null
+    var urlParam : List<RequestEwalletUrlParam>? = listOf(
         RequestEwalletUrlParam("https://test2.bi.go.id/v1/test", "PAY_NOTIFY", "Y"),
         RequestEwalletUrlParam("https://test2.bi.go.id/v1/test", "PAY_RETURN", "Y")
     )
@@ -34,7 +34,7 @@ class RequestEwalletDirectDebit {
         this.validUpTo = validUpTo
         this.pointOfInitiation = pointOfInitiation
         this.amount = amount
-        this.urlParams = urlParams
+        this.urlParam = urlParams
         this.additionalInfo = additionalInfo
     }
 
@@ -50,8 +50,13 @@ class RequestEwalletDirectDebit {
         this.merchantId = merchantId
         this.pointOfInitiation = pointOfInitiation
         this.amount = amount
-        this.urlParams = urlParams
+        this.urlParam = urlParams
         this.additionalInfo = additionalInfo
     }
+
+    override fun toString(): String {
+        return "RequestEwalletDirectDebit(partnerReferenceNo=$partnerReferenceNo, merchantId=$merchantId, subMerchantId=$subMerchantId, externalStoreId=$externalStoreId, validUpTo=$validUpTo, pointOfInitiation=$pointOfInitiation, amount=$amount, urlParams=$urlParam, additionalInfo=$additionalInfo)"
+    }
+
 
 }

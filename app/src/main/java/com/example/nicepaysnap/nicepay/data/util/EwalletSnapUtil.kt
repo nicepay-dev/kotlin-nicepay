@@ -22,7 +22,7 @@ class EwalletSnapUtil {
 
     @RequiresApi(Build.VERSION_CODES.O)
     suspend fun register(request : RequestEwalletDirectDebit): HashMap<String, String> {
-        var responseVA = HashMap<String, String>()
+        var responseEW = HashMap<String, String>()
         getAccessToken().await()
         while(accTok.equals("")){
             delay(100)
@@ -41,8 +41,9 @@ class EwalletSnapUtil {
         val hashBody = encrypt.sha256EncodeHex(convertJsonString)?.lowercase()
 
         val dateFormated = SimpleDateFormat("yyyyMMddhhmmssXXX").format(System.currentTimeMillis())
+        Log.i("dateFormated = ", dateFormated)
 
-        val stringToHash = "POST:"+ utilInfo.endPointUrl + ":" + accTok + ":" + hashBody + ":" + dateTime
+        val stringToHash = "POST:"+ utilInfo.ewalletEndPointUrl + ":" + accTok + ":" + hashBody + ":" + dateTime
         Log.e("Before", stringToHash)
         val afterHash = encrypt.hmacSha512encodeBase64(utilInfo.secretKey, stringToHash)
         Log.e("After", afterHash.toString())
@@ -56,22 +57,20 @@ class EwalletSnapUtil {
         headers["X-EXTERNAL-ID"] = utilInfo.clientKey + "" + dateFormated
         headers["X-PARTNER-ID"] = utilInfo.clientKey
 
-        Log.e("body request", request.toString())
-        Log.e("body", request.toString())
         apiService.generateEwalletDirectDebit(headers, request) {
             Log.e("response code : ", it?.responseCode.toString())
             if (it?.responseCode != null) {
-                responseVA = it?.toMap(HashMap()) as HashMap<String, String>
-                Log.e("responseVATes :", responseVA.toString())
+                responseEW = it?.toMap(HashMap()) as HashMap<String, String>
+                Log.e("responseEWTes :", responseEW.toString())
             } else {
-                Log.e("error :","Error registering virtual account")
+                Log.e("error :","Error registering e-wallet")
             }
         }
-        while(responseVA.isEmpty()){
+        while(responseEW.isEmpty()){
             delay(100)
         }
-        Log.e("responseVA :", responseVA.toString())
-        return responseVA
+        Log.e("responseEw :", responseEW.toString())
+        return responseEW
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

@@ -62,4 +62,10 @@ class RequestEWalletAdditionalInfo {
         this.cartData = cartData
         this.msId = msId
     }
+
+    override fun toString(): String {
+        return "RequestEWalletAdditionalInfo(mitraCd=$mitraCd, goodsNm=$goodsNm, billingNm=$billingNm, billingPhone=$billingPhone, dbProcessUrl=$dbProcessUrl, callBackUrl=$callBackUrl, cartData=$cartData, msId=$msId, msFee=$msFee, msFeeType=$msFeeType, mbFee=$mbFee, mbFeeType=$mbFeeType)"
+    }
+
+
 }

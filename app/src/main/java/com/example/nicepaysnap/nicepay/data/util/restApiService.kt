@@ -2,6 +2,7 @@ package com.example.nicepaysnap.nicepay.data.util
 
 import android.util.Log
 import com.example.nicepaysnap.nicepay.model.*
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,14 +42,16 @@ class restApiService {
         )
     }
 
-    fun generateEwalletDirectDebit(headers: Map<String, String>, request: RequestEwalletDirectDebit, onResult: (responseVaSNAP?) -> Unit){
+    fun generateEwalletDirectDebit(headers: Map<String, String>, request: RequestEwalletDirectDebit, onResult: (ResponseEwalletSnap?) -> Unit){
         val retrofit = retrofitClient.buildService(requestService::class.java)
+
+        Log.e("body request", Gson().toJson(request))
         retrofit.eWalletDirectDebit(headers, request).enqueue(
-            object : Callback<responseVaSNAP> {
-                override fun onFailure(call: Call<responseVaSNAP>, t: Throwable) {
+            object : Callback<ResponseEwalletSnap> {
+                override fun onFailure(call: Call<ResponseEwalletSnap>, t: Throwable) {
                     onResult(null)
                 }
-                override fun onResponse( call: Call<responseVaSNAP>, response: Response<responseVaSNAP>) {
+                override fun onResponse( call: Call<ResponseEwalletSnap>, response: Response<ResponseEwalletSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
                     val vaNumber = response.body()

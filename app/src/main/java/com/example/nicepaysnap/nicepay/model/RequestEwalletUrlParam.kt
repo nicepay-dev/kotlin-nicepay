@@ -11,4 +11,8 @@ class RequestEwalletUrlParam {
         this.type = type
         this.isDeeplink = isDeeplink
     }
+
+    override fun toString(): String {
+        return "RequestEwalletUrlParam(url=$url, type=$type, isDeeplink=$isDeeplink)"
+    }
 }
