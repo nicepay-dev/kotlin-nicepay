@@ -7,7 +7,8 @@ data class ResponseEwalletSnap(
     @SerializedName("responseMessage") val responseMessage: String?,
     @SerializedName("partnerReferenceNo") val partnerReferenceNo : String?,
     @SerializedName("originalReferenceNo") val originalReferenceNo : String?,
-    @SerializedName("webRedirectUrl") val webRedirectUrl : String?
+    @SerializedName("webRedirectUrl") val webRedirectUrl : String?,
+    @SerializedName("redirectToken") val redirectToken : String?
 ) {
 
     fun toMap(hashMap: HashMap<Any, Any>): Map<String, Any?> {
@@ -16,7 +17,8 @@ data class ResponseEwalletSnap(
             "responseMessage" to responseMessage,
             "partnerReferenceNo" to partnerReferenceNo,
             "originalReferenceNo" to originalReferenceNo,
-            "webRedirectUrl" to webRedirectUrl
+            "webRedirectUrl" to webRedirectUrl,
+            "redirectToken" to redirectToken
         )
     }
 

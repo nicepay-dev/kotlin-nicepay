@@ -90,9 +90,14 @@ class Ewallet : AppCompatActivity() {
                         val response = parseValue(register.register(ewalletRequest))
                         Log.i(this.toString() + " Response : ", response.toString())
 
-                        val httpIntent = Intent(Intent.ACTION_VIEW)
-                        httpIntent.setData(Uri.parse(responseEw.get("webRedirectUrl").toString()))
-                        startActivity(httpIntent)
+                        val responseRedirect = Uri.parse(responseEw.get("webRedirectUrl").toString())
+                        if (bOption.toString().equals("LINK")) {
+                            val responseToken = Uri.parse(responseEw.get("redirectToken").toString())
+                        } else {
+                            val httpIntent = Intent(Intent.ACTION_VIEW)
+                            httpIntent.setData(responseRedirect)
+                            startActivity(httpIntent)
+                        }
                     }
                 }
             }
