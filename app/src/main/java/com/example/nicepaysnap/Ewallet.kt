@@ -6,7 +6,13 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.webkit.WebView
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.nicepaysnap.nicepay.data.util.EwalletSnapUtil
@@ -90,9 +96,26 @@ class Ewallet : AppCompatActivity() {
                         val response = parseValue(register.register(ewalletRequest))
                         Log.i(this.toString() + " Response : ", response.toString())
 
-                        val responseRedirect = Uri.parse(responseEw.get("webRedirectUrl").toString())
+                        val redirectUrl = responseEw.get("webRedirectUrl").toString()
+                        val responseRedirect = Uri.parse(redirectUrl)
                         if (bOption.toString().equals("LINK")) {
-                            val responseToken = Uri.parse(responseEw.get("redirectToken").toString())
+                            val redirectToken = responseEw.get("redirectToken").toString()
+
+                            val webView = findViewById<View>(R.id.webview) as WebView
+                            val htmlString = "<form \n" +
+                                    "id=\"returnForm_ewallet\" \n" +
+                                    "name=\"returnForm_ewallet\"\n" +
+                                    "action=\"${redirectUrl}\" method=\"post\">\n" +
+                                    "    <input type=\"text\" name=\"Message\" \n" +
+                                    "    value=\"${redirectToken}\" \n" +
+                                    "    style=\"display: none;\">\n" +
+                                    "        <center><button type=\"submit\">Submit Pay with LinkAja</button></center>\n" +
+                                    "</form>"
+
+                            Toast.makeText(applicationContext, "Please click \"Submit Pay with LinkAja\" button above", Toast.LENGTH_SHORT).show()
+                            webView.loadData(htmlString, "text/html", "UTF-8");
+                            webView.getSettings().setJavaScriptEnabled(true);
+                            webView.loadUrl("javascript:document.returnForm_ewallet.submit()");
                         } else {
                             val httpIntent = Intent(Intent.ACTION_VIEW)
                             httpIntent.setData(responseRedirect)

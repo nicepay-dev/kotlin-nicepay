@@ -60,4 +60,23 @@ class restApiService {
             }
         )
     }
+
+    fun checkoutLink(request: String, onResult: (String?) -> Unit){
+        val retrofit = RetrofitLinkClient.buildService(requestService::class.java)
+
+        Log.e("body request ", request.toString())
+        retrofit.checkoutLink(request).enqueue(
+            object : Callback<String> {
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<String>, response: Response<String>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+                    val vaNumber = response.body()
+                    onResult(vaNumber)
+                }
+            }
+        )
+    }
 }
