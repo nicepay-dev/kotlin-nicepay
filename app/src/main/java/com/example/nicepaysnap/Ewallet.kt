@@ -99,24 +99,17 @@ class Ewallet : AppCompatActivity() {
                         val redirectUrl = responseEw.get("webRedirectUrl").toString()
                         val responseRedirect = Uri.parse(redirectUrl)
                         if (bOption.toString().equals("LINK")) {
-                            val redirectToken = responseEw.get("redirectToken").toString()
-
-                            val webView = findViewById<View>(R.id.webview) as WebView
-                            val htmlString = "<form \n" +
-                                    "id=\"returnForm_ewallet\" \n" +
-                                    "name=\"returnForm_ewallet\"\n" +
-                                    "action=\"${redirectUrl}\" method=\"post\">\n" +
-                                    "    <input type=\"text\" name=\"Message\" \n" +
-                                    "    value=\"${redirectToken}\" \n" +
-                                    "    style=\"display: none;\">\n" +
-                                    "        <center><button type=\"submit\">Submit Pay with LinkAja</button></center>\n" +
-                                    "</form>"
-
-                            Toast.makeText(applicationContext, "Please click \"Submit Pay with LinkAja\" button above", Toast.LENGTH_SHORT).show()
-                            webView.loadData(htmlString, "text/html", "UTF-8");
-                            webView.getSettings().setJavaScriptEnabled(true);
-                            webView.loadUrl("javascript:document.returnForm_ewallet.submit()");
-                        } else {
+                            linkProcess(responseEw.get("redirectToken").toString(), redirectUrl)
+                        } else if (bOption.toString().equals("OVOE")) {
+                            Log.i("OVO Response ", responseEw.get("responseMessage").toString())
+                            if (responseEw.get("responseMessage").toString().contains("Success"))
+                                Toast.makeText(applicationContext, " Response Message from OVO "
+                                        + responseEw.get("responseMessage").toString()
+                                        + if (responseEw["responseMessage"].toString()
+                                        .contains("Success")) " Please continue the transaction on OVO apps" else " "
+                                        , Toast.LENGTH_SHORT).show()
+                        }
+                        else {
                             val httpIntent = Intent(Intent.ACTION_VIEW)
                             httpIntent.setData(responseRedirect)
                             startActivity(httpIntent)
@@ -134,5 +127,23 @@ class Ewallet : AppCompatActivity() {
         while(responseEw.isEmpty()){
             delay(100)
         }
+    }
+
+    fun linkProcess(redirectToken : String, redirectUrl : String) {
+        val webView = findViewById<View>(R.id.webview) as WebView
+        val htmlString = "<form \n" +
+                "id=\"returnForm_ewallet\" \n" +
+                "name=\"returnForm_ewallet\"\n" +
+                "action=\"${redirectUrl}\" method=\"post\">\n" +
+                "    <input type=\"text\" name=\"Message\" \n" +
+                "    value=\"${redirectToken}\" \n" +
+                "    style=\"display: none;\">\n" +
+                "        <center><button type=\"submit\">Submit Pay with LinkAja</button></center>\n" +
+                "</form>"
+
+        Toast.makeText(applicationContext, "Please click \"Submit Pay with LinkAja\" button above", Toast.LENGTH_SHORT).show()
+        webView.loadData(htmlString, "text/html", "UTF-8");
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("javascript:document.returnForm_ewallet.submit()");
     }
 }
