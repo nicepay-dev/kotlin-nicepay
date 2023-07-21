@@ -12,7 +12,9 @@
     <string name="register">REGISTER</string>
     <string name="login_email_hint">Name</string>
     <string name="login_password_hint">Amount</string>
-    <string name="ewallet_goods_name">Goods Name</string>
+    <string name="ewallet_billing_phone">Billing Phone</string>
+    <string name="ewallet_tx_id">Reference Transaction Id</string>
+    <string name="ewallet_reference_no">Partner Reference No</string>
     <string name="ewallet_amount">Amount</string>
     <string name="signup_login_hint">Already have an account? Sign In</string>
     <string name="login_signup_hint">Don\'t have an account? Sign Up</string>

@@ -45,6 +45,10 @@ class FirstFragment : Fragment() {
             val int = Intent(context, Ewallet::class.java)
             startActivity(int)
         }
+
+        binding.buttonThird.setOnClickListener {
+
+        }
     }
 
     override fun onDestroyView() {

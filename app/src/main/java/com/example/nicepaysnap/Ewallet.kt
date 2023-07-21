@@ -27,7 +27,7 @@ import java.text.SimpleDateFormat
 
 class Ewallet : AppCompatActivity() {
 
-    lateinit var goodsName: EditText
+    lateinit var billingPhone: EditText
     lateinit var amount: EditText
     lateinit var mitra: Spinner
     lateinit var regist: Button
@@ -39,7 +39,7 @@ class Ewallet : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ewallet)
 
-        goodsName = findViewById(R.id.editTextGoodsName)
+        billingPhone = findViewById(R.id.editTextBillingPhone)
         amount = findViewById(R.id.editTextEwalletAmount)
         mitra = findViewById(R.id.spinnerMitra)
         regist = findViewById(R.id.registerEwalletButton)
@@ -75,11 +75,11 @@ class Ewallet : AppCompatActivity() {
                 "https://test2.bi.go.id/v1/test", "PAY_RETURN", "Y"
             )
 
-            if (goodsName == null || goodsName.text.toString() == "") goodsName.setText("Item Name")
+            if (billingPhone.text.toString() == "") billingPhone.setText("089876543210")
             val additionalInfo = RequestEWalletAdditionalInfo(
-                bOption.toString(), goodsName.text.toString(), "Testing e-wallet SNAP for Android Simulation", "089876543210",
+                bOption.toString(), "Item Name", "Testing e-wallet SNAP for Android Simulation", billingPhone.text.toString(),
                 "http://ptsv2.com/t/dbProcess/post", "https://www.nicepay.co.id/IONPAY_CLIENT/paymentResult.jsp",
-                "{\"count\":\"1\",\"item\":[{\"img_url\":\"http://img.aaa.com/ima1.jpg\",\"goods_name\":\"${goodsName.text}\",\"goods_detail\":\"Item Detail\",\"goods_amt\":\"${amountValue.value}\",\"goods_quantity\":\"1\"}]}",
+                "{\"count\":\"1\",\"item\":[{\"img_url\":\"http://img.aaa.com/ima1.jpg\",\"goods_name\":\"Item Name\",\"goods_detail\":\"Item Detail\",\"goods_amt\":\"${amountValue.value}\",\"goods_quantity\":\"1\"}]}",
                 "data"
             )
 
