@@ -61,16 +61,16 @@ class restApiService {
         )
     }
 
-    fun checkoutLink(request: String, onResult: (String?) -> Unit){
-        val retrofit = RetrofitLinkClient.buildService(requestService::class.java)
+    fun checkStatusEwallet(headers: Map<String, String>, request: RequestEwalletInquiry, onResult: (ResponseInquiryEwalletSnap?) -> Unit){
+        val retrofit = retrofitClient.buildService(requestService::class.java)
 
-        Log.e("body request ", request.toString())
-        retrofit.checkoutLink(request).enqueue(
-            object : Callback<String> {
-                override fun onFailure(call: Call<String>, t: Throwable) {
+        Log.e("body request ", Gson().toJson(request))
+        retrofit.eWalletCheckStatus(headers, request).enqueue(
+            object : Callback<ResponseInquiryEwalletSnap> {
+                override fun onFailure(call: Call<ResponseInquiryEwalletSnap>, t: Throwable) {
                     onResult(null)
                 }
-                override fun onResponse( call: Call<String>, response: Response<String>) {
+                override fun onResponse( call: Call<ResponseInquiryEwalletSnap>, response: Response<ResponseInquiryEwalletSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
                     val vaNumber = response.body()

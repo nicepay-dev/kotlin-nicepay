@@ -35,6 +35,11 @@
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
+    <style name="normalTextPrimary" parent="headerText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="modifiedEditText" parent="parent">
         <item name="android:textSize">@dimen/newsMoreTextSize</item>
         <item name="android:backgroundTint">@color/primaryTextColor</item>

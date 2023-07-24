@@ -77,9 +77,9 @@ class Ewallet : AppCompatActivity() {
 
             if (billingPhone.text.toString() == "") billingPhone.setText("089876543210")
             val additionalInfo = RequestEWalletAdditionalInfo(
-                bOption.toString(), "Item Name", "Testing e-wallet SNAP for Android Simulation", billingPhone.text.toString(),
+                bOption.toString(), "Testing Nicepay E-Wallet SNAP Item", "Testing e-wallet SNAP for Android Simulation", billingPhone.text.toString(),
                 "http://ptsv2.com/t/dbProcess/post", "https://www.nicepay.co.id/IONPAY_CLIENT/paymentResult.jsp",
-                "{\"count\":\"1\",\"item\":[{\"img_url\":\"http://img.aaa.com/ima1.jpg\",\"goods_name\":\"Item Name\",\"goods_detail\":\"Item Detail\",\"goods_amt\":\"${amountValue.value}\",\"goods_quantity\":\"1\"}]}",
+                "{\"count\":\"1\",\"item\":[{\"img_url\":\"http://img.aaa.com/ima1.jpg\",\"goods_name\":\"Testing E-Wallet Item\",\"goods_detail\":\"Item Detail\",\"goods_amt\":\"${amountValue.value}\",\"goods_quantity\":\"1\"}]}",
                 "data"
             )
 
@@ -93,8 +93,7 @@ class Ewallet : AppCompatActivity() {
                     if (amount.text.toString() == "") {
                         Toast.makeText(applicationContext, "Amount must not be empty", Toast.LENGTH_SHORT).show()
                     } else {
-                        val response = parseValue(register.register(ewalletRequest))
-                        Log.i(this.toString() + " Response : ", response.toString())
+                        Log.i(this.toString() + " Response : ", parseValue(register.register(ewalletRequest)).toString())
 
                         val redirectUrl = responseEw.get("webRedirectUrl").toString()
                         val responseRedirect = Uri.parse(redirectUrl)

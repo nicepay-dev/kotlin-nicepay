@@ -13,6 +13,9 @@ class utilInformation {
     var ewalletEndPointUrl : String = "/api/v1.0/debit/payment-host-to-host"
         private set
 
+    var ewalletInquiryEndPointUrl : String = "/api/v1.0/debit/status"
+        private set
+
     var clientKey : String = "IONPAYTEST"
         private set
 

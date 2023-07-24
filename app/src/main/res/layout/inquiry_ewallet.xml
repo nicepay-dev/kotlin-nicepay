@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     style="@style/loginParent"
-    tools:context=".Ewallet">
+    tools:context=".EwalletInquiry">
 
     <ScrollView
         style="@style/parent">
@@ -51,6 +51,9 @@
                     android:layout_marginTop="40dp"/>
                 <include
                     layout="@layout/layout_ewallet_inquiry"/>
+                <include
+                    android:id="@+id/id_layout_result_ewallet_inquiry"
+                    layout="@layout/layout_result_ewallet_inquiry" />
 
             </LinearLayout>
             <ImageView

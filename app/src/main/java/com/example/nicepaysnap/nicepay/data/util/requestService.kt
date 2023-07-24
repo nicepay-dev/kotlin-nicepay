@@ -22,7 +22,7 @@ interface requestService {
     @POST("api/v1.0/debit/payment-host-to-host")
     fun eWalletDirectDebit(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestEwalletDirectDebit): Call<ResponseEwalletSnap>;
 
-    @Multipart
-    @POST("/checkout/payment")
-    fun checkoutLink(@Part("Message") message : String) : Call<String>
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/debit/status")
+    fun eWalletCheckStatus(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestEwalletInquiry): Call<ResponseInquiryEwalletSnap>;
 }

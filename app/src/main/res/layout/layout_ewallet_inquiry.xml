@@ -39,7 +39,7 @@
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <EditText
-                android:id="@+id/editreferenceNo"
+                android:id="@+id/editReferenceNo"
                 style="@style/modifiedEditText"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -51,7 +51,7 @@
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <EditText
-                android:id="@+id/editTextEwalletAmount"
+                android:id="@+id/editAmount"
                 style="@style/modifiedEditText"
                 android:inputType="number|none"
                 android:digits="0123456789"
@@ -60,8 +60,9 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/registerEwalletButton"
+            android:id="@+id/inquiryEwalletButton"
             style="@style/loginButton"
+            android:textColor="#fff"
             android:text="Check Status"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"/>

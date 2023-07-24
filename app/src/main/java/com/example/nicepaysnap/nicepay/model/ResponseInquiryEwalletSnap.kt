@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class ResponseInquiryEwalletSnap(
     @SerializedName("responseCode") val responseCode: Int?,
     @SerializedName("responseMessage") val responseMessage: String?,
-    @SerializedName("partnerReferenceNo") val partnerReferenceNo : String?,
+    @SerializedName("originalPartnerReferenceNo") val partnerReferenceNo : String?,
     @SerializedName("originalReferenceNo") val originalReferenceNo : String?,
     @SerializedName("serviceCode") val serviceCode : String?,
     @SerializedName("latestTransactionStatus") val latestTransactionStatus : String?,
@@ -23,7 +23,6 @@ data class ResponseInquiryEwalletSnap(
             "serviceCode" to serviceCode,
             "latestTransactionStatus" to latestTransactionStatus,
             "transactionStatusDesc" to transactionStatusDesc,
-            "transAmount" to transAmount,
             "amountValue" to transAmount.value,
             "amountCurrency" to transAmount.currency,
             "mitraCd" to additionalInfo.mitraCd,
