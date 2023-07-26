@@ -79,4 +79,23 @@ class restApiService {
             }
         )
     }
+
+    fun refundEwallet(headers: Map<String, String>, request: RequestEwalletRefund, onResult: (ResponseRefundEwalletSnap?) -> Unit){
+        val retrofit = retrofitClient.buildService(requestService::class.java)
+
+        Log.e("body request ", Gson().toJson(request))
+        retrofit.eWalletRefund(headers, request).enqueue(
+            object : Callback<ResponseRefundEwalletSnap> {
+                override fun onFailure(call: Call<ResponseRefundEwalletSnap>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<ResponseRefundEwalletSnap>, response: Response<ResponseRefundEwalletSnap>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+                    val vaNumber = response.body()
+                    onResult(vaNumber)
+                }
+            }
+        )
+    }
 }

@@ -34,7 +34,7 @@ class Ewallet : AppCompatActivity() {
     lateinit var regist: Button
     var responseEw = HashMap<String, String>()
     var register : EwalletSnapUtil = EwalletSnapUtil()
-    var bOption : String? = "Select Mitra"
+    var tOption : String? = "Select Mitra"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +56,7 @@ class Ewallet : AppCompatActivity() {
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
-                    bOption = mitraOption[position]
+                    tOption = mitraOption[position]
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
@@ -80,7 +80,7 @@ class Ewallet : AppCompatActivity() {
             if (billingPhone.text.toString() == "") billingPhone.setText("089876543210")
             if (goodsName.text.toString() == "") goodsName.setText("Testing SNAP E-Wallet Item Name")
             val additionalInfo = RequestEWalletAdditionalInfo(
-                bOption.toString(), goodsName.text.toString(), "Testing e-wallet SNAP for Android Simulation", billingPhone.text.toString(),
+                tOption.toString(), goodsName.text.toString(), "Testing e-wallet SNAP for Android Simulation", billingPhone.text.toString(),
                 "http://ptsv2.com/t/dbProcess/post", "https://www.nicepay.co.id/IONPAY_CLIENT/paymentResult.jsp",
                 "{\"count\":\"1\",\"item\":[{\"img_url\":\"http://img.aaa.com/ima1.jpg\",\"goods_name\":\"${goodsName.text.toString()}\",\"goods_detail\":\"Item Detail\",\"goods_amt\":\"${amountValue.value}\",\"goods_quantity\":\"1\"}]}",
                 "data"
@@ -100,9 +100,9 @@ class Ewallet : AppCompatActivity() {
 
                         val redirectUrl = responseEw.get("webRedirectUrl").toString()
                         val responseRedirect = Uri.parse(redirectUrl)
-                        if (bOption.toString().equals("LINK")) {
+                        if (tOption.toString().equals("LINK")) {
                             linkProcess(responseEw.get("redirectToken").toString(), redirectUrl)
-                        } else if (bOption.toString().equals("OVOE")) {
+                        } else if (tOption.toString().equals("OVOE")) {
                             Log.i("OVO Response ", responseEw.get("responseMessage").toString())
                             if (responseEw.get("responseMessage").toString().contains("Success"))
                                 Toast.makeText(applicationContext, " Response Message from OVO "

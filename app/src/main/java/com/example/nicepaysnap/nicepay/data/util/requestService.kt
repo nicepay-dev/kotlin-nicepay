@@ -25,4 +25,8 @@ interface requestService {
     @Headers("Content-Type: application/json")
     @POST("api/v1.0/debit/status")
     fun eWalletCheckStatus(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestEwalletInquiry): Call<ResponseInquiryEwalletSnap>;
+
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/debit/refund")
+    fun eWalletRefund(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestEwalletRefund): Call<ResponseRefundEwalletSnap>;
 }

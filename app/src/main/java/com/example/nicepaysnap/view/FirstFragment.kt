@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.nicepaysnap.Ewallet
 import com.example.nicepaysnap.EwalletInquiry
+import com.example.nicepaysnap.EwalletRefund
 import com.example.nicepaysnap.databinding.FragmentFirstBinding
 import com.example.nicepaysnap.virtualAccount
 
@@ -50,6 +51,13 @@ class FirstFragment : Fragment() {
         binding.buttonThird.setOnClickListener {
 
             val int = Intent(context, EwalletInquiry::class.java)
+            startActivity(int)
+
+        }
+
+        binding.buttonFourth.setOnClickListener {
+
+            val int = Intent(context, EwalletRefund::class.java)
             startActivity(int)
 
         }

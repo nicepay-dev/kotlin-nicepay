@@ -7,9 +7,9 @@ open class BaseEwalletAdditionalInfo {
     var billingPhone: String? = null
     var billingNm: String? = null
 
-    open fun BaseEwalletAdditionalInfo() {}
+    constructor() {}
 
-    open fun BaseEwalletAdditionalInfo(
+    constructor(
         mitraCd: String?,
         goodsNm: String?,
         billingPhone: String?,

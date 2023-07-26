@@ -64,7 +64,6 @@ class EwalletInquiry : AppCompatActivity() {
                     .build()
 
                 val dateFormat : DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+07:00")
-                Log.i("Date timestamp", dateFormat.format(Date()))
                 val requestEwalletInquiry = RequestEwalletInquiry(
                     inputPartnerReferenceNo.text.toString(), inputOriginalReferenceNo.text.toString(),
                     dateFormat.format(Date()), amount
@@ -75,19 +74,33 @@ class EwalletInquiry : AppCompatActivity() {
                         Log.i(this.toString() + " Response : ",
                             parseValue(ewalletSnapUtil.checkStatus(requestEwalletInquiry)).toString())
 
-                        responseCode.setText(responseEw.get("responseCode").toString())
-                        responseMessage.setText(responseEw.get("responseMessage").toString())
-                        partnerReferenceNo.setText(responseEw.get("partnerReferenceNo").toString())
-                        originalReferenceNo.setText(responseEw.get("originalReferenceNo").toString())
-                        serviceCode.setText(responseEw.get("serviceCode").toString())
-                        latestTransactionStatus.setText(responseEw.get("latestTransactionStatus").toString())
-                        transactionStatusDesc.setText(responseEw.get("transactionStatusDesc").toString())
-                        amountValue.setText(responseEw.get("amountValue").toString())
-                        amountCurrency.setText(responseEw.get("amountCurrency").toString())
-                        mitraCd.setText(responseEw.get("mitraCd").toString())
-                        billingPhone.setText(responseEw.get("billingPhone").toString())
+                        if (responseEw.get("responseMessage").toString().contains("Success")) {
+                            responseCode.setText(responseEw.get("responseCode").toString())
+                            responseMessage.setText(responseEw.get("responseMessage").toString())
+                            partnerReferenceNo.setText(
+                                responseEw.get("partnerReferenceNo").toString()
+                            )
+                            originalReferenceNo.setText(
+                                responseEw.get("originalReferenceNo").toString()
+                            )
+                            serviceCode.setText(responseEw.get("serviceCode").toString())
+                            latestTransactionStatus.setText(
+                                responseEw.get("latestTransactionStatus").toString()
+                            )
+                            transactionStatusDesc.setText(
+                                responseEw.get("transactionStatusDesc").toString()
+                            )
+                            amountValue.setText(responseEw.get("amountValue").toString())
+                            amountCurrency.setText(responseEw.get("amountCurrency").toString())
+                            mitraCd.setText(responseEw.get("mitraCd").toString())
+                            billingPhone.setText(responseEw.get("billingPhone").toString())
 
-                        resultLayout.setVisibility(View.VISIBLE)
+                            resultLayout.setVisibility(View.VISIBLE)
+                        } else {
+                            Toast.makeText(applicationContext, "Response Inquiry : " +
+                                    responseEw.get("responseMessage").toString(), Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }

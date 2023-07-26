@@ -16,6 +16,7 @@
     <string name="ewallet_billing_phone">Billing Phone</string>
     <string name="ewallet_tx_id">Reference Transaction Id</string>
     <string name="ewallet_reference_no">Partner Reference No</string>
+    <string name="ewallet_refund_reason">Reason to Refund</string>
     <string name="ewallet_amount">Amount</string>
     <string name="signup_login_hint">Already have an account? Sign In</string>
     <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
@@ -39,5 +40,10 @@
         <item>ESHP</item>
         <item>LINK</item>
         <item>OVOE</item>
+    </string-array>
+
+    <string-array name="refundType">
+        <item>Full</item>
+        <item>Partial</item>
     </string-array>
 </resources>

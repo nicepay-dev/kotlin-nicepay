@@ -16,6 +16,9 @@ class utilInformation {
     var ewalletInquiryEndPointUrl : String = "/api/v1.0/debit/status"
         private set
 
+    var ewalletRefundEndPointUrl : String = "/api/v1.0/debit/refund"
+        private set
+
     var clientKey : String = "IONPAYTEST"
         private set
 
