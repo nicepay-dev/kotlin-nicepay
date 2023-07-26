@@ -156,10 +156,16 @@ class Ewallet : AppCompatActivity() {
                 "    <input type=\"text\" name=\"Message\" \n" +
                 "    value=\"${redirectToken}\" \n" +
                 "    style=\"display: none;\">\n" +
-                "        <center><button type=\"submit\">Submit Pay with LinkAja</button></center>\n" +
-                "</form>"
+                "        <center><img id=\"loading-image\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831\" width=\"74\" alt=\"Loading...\" /></center>\n" +
+                "</form>" + "\n" +
+                "<script>\n" +
+                "\tsetInterval(\n" +
+                "\t\t\tfunction(){ document.getElementById('returnForm_ewallet').submit() },\n" +
+                "\t\t\t1000\n" +
+                "\t)\n" +
+                "</script>"
 
-        Toast.makeText(applicationContext, "Please click \"Submit Pay with LinkAja\" button above", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "Please wait and submit the form above", Toast.LENGTH_SHORT).show()
         webView.loadData(htmlString, "text/html", "UTF-8");
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("javascript:document.returnForm_ewallet.submit()");
