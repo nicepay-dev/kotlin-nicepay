@@ -48,9 +48,9 @@ class EwalletRefund : AppCompatActivity() {
         refundType = findViewById(R.id.spinnerRefundType)
         buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
 
-        buttonCloseLayout.setOnClickListener(View.OnClickListener {
+        buttonCloseLayout.setOnClickListener {
             super.onBackPressed()
-        })
+        }
 
         val optionRefundType = resources.getStringArray(R.array.refundType)
 

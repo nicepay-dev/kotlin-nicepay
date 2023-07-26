@@ -55,9 +55,9 @@ class EwalletInquiry : AppCompatActivity() {
         buttonCheckStatus = findViewById(R.id.inquiryEwalletButton)
         buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
 
-        buttonCloseLayout.setOnClickListener(View.OnClickListener {
+        buttonCloseLayout.setOnClickListener {
             super.onBackPressed()
-        })
+        }
 
         buttonCheckStatus.setOnClickListener {
             if (inputAmount.text.toString() == "" || inputOriginalReferenceNo.text.toString() == ""

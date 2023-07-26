@@ -77,9 +77,9 @@ class Ewallet : AppCompatActivity() {
             }
         }
 
-        buttonCloseLayout.setOnClickListener(View.OnClickListener {
+        buttonCloseLayout.setOnClickListener{
             super.onBackPressed()
-        })
+        }
 
         regist.setOnClickListener {
             val amountValue : totalAmount = totalAmount.Builder()
