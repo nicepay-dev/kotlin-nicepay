@@ -37,9 +37,9 @@
 
     <string-array name="mitraCode">
         <item>DANA</item>
-        <item>ESHP</item>
-        <item>LINK</item>
-        <item>OVOE</item>
+        <item>ShopeePay</item>
+        <item>LinkAja</item>
+        <item>OVO</item>
     </string-array>
 
     <string-array name="refundType">

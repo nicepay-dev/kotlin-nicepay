@@ -56,7 +56,16 @@ class Ewallet : AppCompatActivity() {
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
-                    tOption = mitraOption[position]
+
+                    if (mitraOption[position].toString().equals("ShopeePay")) {
+                        tOption = "ESHP"
+                    } else if (mitraOption[position].toString().equals("OVO")) {
+                        tOption = "OVOE"
+                    } else if (mitraOption[position].toString().equals("LinkAja")) {
+                        tOption = "LINK"
+                    } else {
+                        tOption = mitraOption[position]
+                    }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
