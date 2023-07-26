@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -25,6 +26,7 @@ class EwalletInquiry : AppCompatActivity() {
     lateinit var inputPartnerReferenceNo : EditText
     lateinit var inputAmount : EditText
     lateinit var buttonCheckStatus : Button
+    lateinit var buttonCloseLayout : ImageView
     var responseEw = HashMap<String, String>()
     var ewalletSnapUtil : EwalletSnapUtil = EwalletSnapUtil()
 
@@ -51,6 +53,11 @@ class EwalletInquiry : AppCompatActivity() {
         inputPartnerReferenceNo = findViewById(R.id.editReferenceNo)
         inputAmount = findViewById(R.id.editAmount)
         buttonCheckStatus = findViewById(R.id.inquiryEwalletButton)
+        buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
+
+        buttonCloseLayout.setOnClickListener(View.OnClickListener {
+            super.onBackPressed()
+        })
 
         buttonCheckStatus.setOnClickListener {
             if (inputAmount.text.toString() == "" || inputOriginalReferenceNo.text.toString() == ""

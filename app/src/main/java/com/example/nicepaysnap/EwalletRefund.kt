@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,7 @@ class EwalletRefund : AppCompatActivity() {
     lateinit var inputReason : EditText
     lateinit var refundType: Spinner
     lateinit var buttonRefund : Button
+    lateinit var buttonCloseLayout : ImageView
     var ewalletSnapUtil : EwalletSnapUtil = EwalletSnapUtil()
     var responseEw = HashMap<String, String>()
     var tOption : String? = "Select Refund Type"
@@ -44,6 +46,11 @@ class EwalletRefund : AppCompatActivity() {
         inputReason = findViewById(R.id.editReason)
         buttonRefund = findViewById(R.id.refundEwalletButton)
         refundType = findViewById(R.id.spinnerRefundType)
+        buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
+
+        buttonCloseLayout.setOnClickListener(View.OnClickListener {
+            super.onBackPressed()
+        })
 
         val optionRefundType = resources.getStringArray(R.array.refundType)
 

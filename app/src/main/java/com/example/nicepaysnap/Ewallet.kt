@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,7 @@ class Ewallet : AppCompatActivity() {
     lateinit var amount: EditText
     lateinit var mitra: Spinner
     lateinit var regist: Button
+    lateinit var buttonCloseLayout : ImageView
     var responseEw = HashMap<String, String>()
     var register : EwalletSnapUtil = EwalletSnapUtil()
     var tOption : String? = "Select Mitra"
@@ -45,6 +47,7 @@ class Ewallet : AppCompatActivity() {
         amount = findViewById(R.id.editTextEwalletAmount)
         mitra = findViewById(R.id.spinnerMitra)
         regist = findViewById(R.id.registerEwalletButton)
+        buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
 
         val mitraOption = resources.getStringArray(R.array.mitraCode)
 
@@ -73,6 +76,10 @@ class Ewallet : AppCompatActivity() {
                 }
             }
         }
+
+        buttonCloseLayout.setOnClickListener(View.OnClickListener {
+            super.onBackPressed()
+        })
 
         regist.setOnClickListener {
             val amountValue : totalAmount = totalAmount.Builder()
