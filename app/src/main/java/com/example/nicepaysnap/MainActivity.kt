@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 settingsFAB.setOnClickListener {
-                    val intent = Intent(this, Ewallet::class.java)
+                    val intent = Intent(this, EwalletMenu::class.java)
                     startActivity(intent)
                 }
 

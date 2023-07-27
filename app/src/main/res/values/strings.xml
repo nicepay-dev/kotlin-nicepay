@@ -4,12 +4,13 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="nicepay_snap_label">Nicepay SNAP</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_first_fragment">Welcome to Nicepay Android Simulation. Please select your payment method by clicking cart logo in the buttom-right</string>
+    <string name="ewallet_menu">E-Wallet</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="register">REGISTER</string>
     <string name="login_email_hint">Name</string>
     <string name="login_password_hint">Amount</string>
     <string name="ewallet_goods_name">Goods Name</string>
@@ -20,6 +21,10 @@
     <string name="ewallet_amount">Amount</string>
     <string name="signup_login_hint">Already have an account? Sign In</string>
     <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+
+    <string name="register">REGISTER</string>
+    <string name="inquiry">CHECK STATUS</string>
+    <string name="refund">Refund</string>
 
     <string-array name="bankCode">
         <item>BRIN</item>
