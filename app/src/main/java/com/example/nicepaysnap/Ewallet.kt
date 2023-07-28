@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 
 
-class Ewallet : AppCompatActivity() {
+class Ewallet : BaseAppCompatActivity() {
 
     lateinit var goodsName: EditText
     lateinit var billingPhone: EditText
@@ -34,7 +34,6 @@ class Ewallet : AppCompatActivity() {
     lateinit var mitra: Spinner
     lateinit var regist: Button
     lateinit var buttonCloseLayout : ImageView
-    var responseEw = HashMap<String, String>()
     var register : EwalletSnapUtil = EwalletSnapUtil()
     var tOption : String? = "Select Mitra"
 
@@ -136,14 +135,6 @@ class Ewallet : AppCompatActivity() {
                 }
             }
 
-        }
-    }
-
-    suspend fun parseValue(responseData: HashMap<String, String>) {
-        // perform parsing operation asynchronously
-        responseEw = responseData
-        while(responseEw.isEmpty()){
-            delay(100)
         }
     }
 

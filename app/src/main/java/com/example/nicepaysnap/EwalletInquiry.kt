@@ -20,15 +20,13 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class EwalletInquiry : AppCompatActivity() {
+class EwalletInquiry : BaseAppCompatActivity() {
 
     lateinit var inputOriginalReferenceNo : EditText
     lateinit var inputPartnerReferenceNo : EditText
     lateinit var inputAmount : EditText
     lateinit var buttonCheckStatus : Button
     lateinit var buttonCloseLayout : ImageView
-    var responseEw = HashMap<String, String>()
-    var ewalletSnapUtil : EwalletSnapUtil = EwalletSnapUtil()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,13 +112,4 @@ class EwalletInquiry : AppCompatActivity() {
         }
 
     }
-
-    suspend fun parseValue(responseData: HashMap<String, String>) {
-        // perform parsing operation asynchronously
-        responseEw = responseData
-        while(responseEw.isEmpty()){
-            delay(100)
-        }
-    }
-
 }

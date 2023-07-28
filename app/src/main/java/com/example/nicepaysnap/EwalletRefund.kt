@@ -23,7 +23,7 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class EwalletRefund : AppCompatActivity() {
+class EwalletRefund : BaseAppCompatActivity() {
 
     lateinit var inputOriginalReferenceNo : EditText
     lateinit var inputPartnerReferenceNo : EditText
@@ -32,8 +32,6 @@ class EwalletRefund : AppCompatActivity() {
     lateinit var refundType: Spinner
     lateinit var buttonRefund : Button
     lateinit var buttonCloseLayout : ImageView
-    var ewalletSnapUtil : EwalletSnapUtil = EwalletSnapUtil()
-    var responseEw = HashMap<String, String>()
     var tOption : String? = "Select Refund Type"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,13 +106,4 @@ class EwalletRefund : AppCompatActivity() {
             }
         }
     }
-
-    suspend fun parseValue(responseData: HashMap<String, String>) {
-        // perform parsing operation asynchronously
-        responseEw = responseData
-        while(responseEw.isEmpty()){
-            delay(100)
-        }
-    }
-
 }
