@@ -1,10 +1,11 @@
-package com.example.nicepaysnap
+package com.example.nicepaysnap.view.ewallet
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import com.example.nicepaysnap.R
 
 class EwalletMenu : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class EwalletMenu : AppCompatActivity() {
 
         register.setOnClickListener {
 
-            val page = Intent(this, Ewallet::class.java)
+            val page = Intent(this, EwalletRegistration::class.java)
             startActivity(page)
 
         }

@@ -1,4 +1,4 @@
-package com.example.nicepaysnap
+package com.example.nicepaysnap.view.ewallet
 
 import android.content.Intent
 import android.net.Uri
@@ -14,19 +14,19 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.nicepaysnap.view.BaseAppCompatActivity
+import com.example.nicepaysnap.R
 import com.example.nicepaysnap.nicepay.data.util.EwalletSnapUtil
 import com.example.nicepaysnap.nicepay.model.RequestEWalletAdditionalInfo
 import com.example.nicepaysnap.nicepay.model.RequestEwalletDirectDebit
 import com.example.nicepaysnap.nicepay.model.RequestEwalletUrlParam
 import com.example.nicepaysnap.nicepay.model.totalAmount
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 
 
-class Ewallet : BaseAppCompatActivity() {
+class EwalletRegistration : BaseAppCompatActivity() {
 
     lateinit var goodsName: EditText
     lateinit var billingPhone: EditText

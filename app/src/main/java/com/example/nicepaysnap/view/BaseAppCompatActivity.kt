@@ -1,4 +1,4 @@
-package com.example.nicepaysnap
+package com.example.nicepaysnap.view
 
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nicepaysnap.nicepay.data.util.EwalletSnapUtil

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     style="@style/loginParent"
-    tools:context=".Ewallet">
+    tools:context=".view.ewallet.EwalletRegistration">
 
     <ScrollView
         style="@style/parent">

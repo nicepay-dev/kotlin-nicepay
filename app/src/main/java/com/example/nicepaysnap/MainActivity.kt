@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.nicepaysnap.databinding.ActivityMainBinding
+import com.example.nicepaysnap.view.ewallet.EwalletMenu
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var addFAB: FloatingActionButton
     lateinit var homeFAB: FloatingActionButton
+    lateinit var qrFAB: FloatingActionButton
     lateinit var settingsFAB: FloatingActionButton
     var fabVisible = false
 
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         addFAB = findViewById(R.id.fab)
         homeFAB = findViewById(R.id.idFABHome)
         settingsFAB = findViewById(R.id.idFABSettings)
+        qrFAB = findViewById(R.id.idFABQr)
 
         fabVisible = false
 
@@ -44,9 +47,11 @@ class MainActivity : AppCompatActivity() {
             if (!fabVisible) {
                 homeFAB.show()
                 settingsFAB.show()
+                qrFAB.show()
 
                 homeFAB.visibility = View.VISIBLE
                 settingsFAB.visibility = View.VISIBLE
+                qrFAB.visibility = View.VISIBLE
 
                 addFAB.setImageDrawable(resources.getDrawable(R.drawable.ic_close))
 
@@ -64,9 +69,11 @@ class MainActivity : AppCompatActivity() {
             } else {
                 homeFAB.hide()
                 settingsFAB.hide()
+                qrFAB.hide()
 
                 homeFAB.visibility = View.GONE
                 settingsFAB.visibility = View.GONE
+                qrFAB.visibility = View.GONE
 
                 addFAB.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_shopping_cart))
 

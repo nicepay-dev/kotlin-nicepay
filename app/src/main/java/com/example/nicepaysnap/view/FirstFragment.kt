@@ -6,9 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.nicepaysnap.Ewallet
-import com.example.nicepaysnap.EwalletInquiry
-import com.example.nicepaysnap.EwalletRefund
 import com.example.nicepaysnap.databinding.FragmentFirstBinding
 import com.example.nicepaysnap.virtualAccount
 

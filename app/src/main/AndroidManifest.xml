@@ -23,16 +23,16 @@
             android:name=".virtualAccount"
             android:exported="false" />
         <activity
-            android:name=".EwalletMenu"
+            android:name=".view.ewallet.EwalletMenu"
             android:exported="false" />
         <activity
-            android:name=".Ewallet"
+            android:name=".view.ewallet.EwalletRegistration"
             android:exported="false" />
         <activity
-            android:name=".EwalletInquiry"
+            android:name=".view.ewallet.EwalletInquiry"
             android:exported="false" />
         <activity
-            android:name=".EwalletRefund"
+            android:name=".view.ewallet.EwalletRefund"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

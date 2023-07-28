@@ -1,4 +1,4 @@
-package com.example.nicepaysnap
+package com.example.nicepaysnap.view.ewallet
 
 import android.os.Build
 import android.os.Bundle
@@ -11,13 +11,12 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.nicepaysnap.nicepay.data.util.EwalletSnapUtil
+import com.example.nicepaysnap.view.BaseAppCompatActivity
+import com.example.nicepaysnap.R
 import com.example.nicepaysnap.nicepay.model.RefundEwalletAdditionalInfo
 import com.example.nicepaysnap.nicepay.model.RequestEwalletRefund
 import com.example.nicepaysnap.nicepay.model.totalAmount
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.DateFormat
 import java.text.SimpleDateFormat
