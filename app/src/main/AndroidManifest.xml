@@ -26,6 +26,9 @@
             android:name=".view.ewallet.EwalletMenu"
             android:exported="false" />
         <activity
+            android:name=".view.qris.QrisMenu"
+            android:exported="false" />
+        <activity
             android:name=".view.ewallet.EwalletRegistration"
             android:exported="false" />
         <activity

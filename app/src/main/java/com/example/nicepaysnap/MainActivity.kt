@@ -12,6 +12,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.nicepaysnap.databinding.ActivityMainBinding
 import com.example.nicepaysnap.view.ewallet.EwalletMenu
+import com.example.nicepaysnap.view.qris.QrisMenu
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -62,6 +63,11 @@ class MainActivity : AppCompatActivity() {
 
                 settingsFAB.setOnClickListener {
                     val intent = Intent(this, EwalletMenu::class.java)
+                    startActivity(intent)
+                }
+
+                qrFAB.setOnClickListener {
+                    val intent = Intent(this, QrisMenu::class.java)
                     startActivity(intent)
                 }
 

@@ -9,7 +9,6 @@
     <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Welcome to Nicepay Android Simulation. Please select your payment method by clicking cart logo in the buttom-right</string>
-    <string name="ewallet_menu">E-Wallet</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="login_email_hint">Name</string>
     <string name="login_password_hint">Amount</string>
