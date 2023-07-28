@@ -54,6 +54,7 @@
 
             </LinearLayout>
             <ImageView
+                android:id="@+id/buttonCloseLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"

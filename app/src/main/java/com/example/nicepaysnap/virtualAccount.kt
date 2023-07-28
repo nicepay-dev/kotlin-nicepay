@@ -19,6 +19,7 @@ class virtualAccount : AppCompatActivity() {
     lateinit var amount: EditText
     lateinit var bank: Spinner
     lateinit var pay: Button
+    lateinit var buttonCloseLayout : ImageView
     var responseVA = HashMap<String, String>()
     var lib : nicepayLib = nicepayLib()
     var bOption : String? = "Select Bank"
@@ -31,6 +32,7 @@ class virtualAccount : AppCompatActivity() {
         amount = findViewById(R.id.editTextAmount)
         bank = findViewById(R.id.spinnerBank)
         pay = findViewById(R.id.cirPayButton)
+        buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
 
         val bankOption = resources.getStringArray(R.array.bankCode)
 
@@ -49,6 +51,10 @@ class virtualAccount : AppCompatActivity() {
                     // write code to perform some action
                 }
             }
+        }
+
+        buttonCloseLayout.setOnClickListener{
+            super.onBackPressed()
         }
 
         pay.setOnClickListener {
