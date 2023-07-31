@@ -1,9 +1,7 @@
 package com.example.nicepaysnap.nicepay.model
 
 class RequestEWalletAdditionalInfo : BaseEwalletAdditionalInfo {
-    var dbProcessUrl: String? = null
-    var callBackUrl: String? = null
-    var cartData: String? = "{\"count\":\"1\",\"item\":[{\"img_url\":\"http://img.aaa.com/ima1.jpg\",\"goods_name\":\"${goodsNm}\",\"goods_detail\":\"Item Detail\",\"goods_amt\":%s,\"goods_quantity\":\"1\"}]}"
+
     var msId: String? = null
     var msFee: String? = null
     var msFeeType: String? = null

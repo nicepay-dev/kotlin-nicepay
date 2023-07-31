@@ -76,31 +76,31 @@ class EwalletInquiry : BaseEwalletAppCompatActivity() {
                         Log.i(this.toString() + " Response : ",
                             parseValue(ewalletService.checkStatus(requestEwalletInquiry)).toString())
 
-                        if (responseEw.get("responseMessage").toString().contains("Success")) {
-                            responseCode.setText(responseEw.get("responseCode").toString())
-                            responseMessage.setText(responseEw.get("responseMessage").toString())
+                        if (responseRest.get("responseMessage").toString().contains("Success")) {
+                            responseCode.setText(responseRest.get("responseCode").toString())
+                            responseMessage.setText(responseRest.get("responseMessage").toString())
                             partnerReferenceNo.setText(
-                                responseEw.get("partnerReferenceNo").toString()
+                                responseRest.get("partnerReferenceNo").toString()
                             )
                             originalReferenceNo.setText(
-                                responseEw.get("originalReferenceNo").toString()
+                                responseRest.get("originalReferenceNo").toString()
                             )
-                            serviceCode.setText(responseEw.get("serviceCode").toString())
+                            serviceCode.setText(responseRest.get("serviceCode").toString())
                             latestTransactionStatus.setText(
-                                responseEw.get("latestTransactionStatus").toString()
+                                responseRest.get("latestTransactionStatus").toString()
                             )
                             transactionStatusDesc.setText(
-                                responseEw.get("transactionStatusDesc").toString()
+                                responseRest.get("transactionStatusDesc").toString()
                             )
-                            amountValue.setText(responseEw.get("amountValue").toString())
-                            amountCurrency.setText(responseEw.get("amountCurrency").toString())
-                            mitraCd.setText(responseEw.get("mitraCd").toString())
-                            billingPhone.setText(responseEw.get("billingPhone").toString())
+                            amountValue.setText(responseRest.get("amountValue").toString())
+                            amountCurrency.setText(responseRest.get("amountCurrency").toString())
+                            mitraCd.setText(responseRest.get("mitraCd").toString())
+                            billingPhone.setText(responseRest.get("billingPhone").toString())
 
                             resultLayout.setVisibility(View.VISIBLE)
                         } else {
                             Toast.makeText(applicationContext, "Response Inquiry : " +
-                                    responseEw.get("responseMessage").toString(), Toast.LENGTH_SHORT
+                                    responseRest.get("responseMessage").toString(), Toast.LENGTH_SHORT
                             ).show()
                         }
                     }

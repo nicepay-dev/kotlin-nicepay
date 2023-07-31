@@ -1,13 +1,12 @@
 package com.example.nicepaysnap.nicepay.model
 
-open class BaseEwalletAdditionalInfo {
+open class BaseEwalletAdditionalInfo : BaseCommonAdditionalInfo {
 
-    var mitraCd: String? = null
-    var goodsNm: String? = null
     var billingPhone: String? = null
-    var billingNm: String? = null
 
     constructor() {}
+
+
 
     constructor(
         mitraCd: String?,
@@ -20,5 +19,11 @@ open class BaseEwalletAdditionalInfo {
         this.billingPhone = billingPhone
         this.billingNm = billingNm
     }
+
+    constructor(mitraCd: String?, goodsNm: String?, billingNm: String?) : super(
+        mitraCd,
+        goodsNm,
+        billingNm
+    )
 
 }

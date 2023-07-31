@@ -110,16 +110,16 @@ class EwalletRegistration : BaseEwalletAppCompatActivity() {
                     } else {
                         Log.i(this.toString() + " Response : ", parseValue(ewalletService.register(ewalletRequest)).toString())
 
-                        val redirectUrl = responseEw.get("webRedirectUrl").toString()
+                        val redirectUrl = responseRest.get("webRedirectUrl").toString()
                         val responseRedirect = Uri.parse(redirectUrl)
                         if (tOption.toString().equals("LINK")) {
-                            linkProcess(responseEw.get("redirectToken").toString(), redirectUrl)
+                            linkProcess(responseRest.get("redirectToken").toString(), redirectUrl)
                         } else if (tOption.toString().equals("OVOE")) {
-                            Log.i("OVO Response ", responseEw.get("responseMessage").toString())
-                            if (responseEw.get("responseMessage").toString().contains("Success"))
+                            Log.i("OVO Response ", responseRest.get("responseMessage").toString())
+                            if (responseRest.get("responseMessage").toString().contains("Success"))
                                 Toast.makeText(applicationContext, " Response Message from OVO "
-                                        + responseEw.get("responseMessage").toString()
-                                        + if (responseEw["responseMessage"].toString()
+                                        + responseRest.get("responseMessage").toString()
+                                        + if (responseRest["responseMessage"].toString()
                                         .contains("Success")) " Please continue the transaction on OVO apps" else " "
                                         , Toast.LENGTH_SHORT).show()
                         }

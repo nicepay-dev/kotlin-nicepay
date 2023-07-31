@@ -1,4 +1,4 @@
 package com.example.nicepaysnap.view.qris
 
-class QrisRefund {
+class QrisRefund : BaseQrisAppCompatActivity() {
 }

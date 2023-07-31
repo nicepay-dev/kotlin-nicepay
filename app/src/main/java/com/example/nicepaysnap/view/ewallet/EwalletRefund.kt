@@ -96,8 +96,8 @@ class EwalletRefund : BaseEwalletAppCompatActivity() {
                             parseValue(ewalletService.refund(requestEwalletRefund)).toString())
 
                         Toast.makeText(applicationContext, "Response Refund : " +
-                                responseEw.get("responseMessage").toString() + " " +
-                                responseEw.get("responseCode").toString(), Toast.LENGTH_SHORT)
+                                responseRest.get("responseMessage").toString() + " " +
+                                responseRest.get("responseCode").toString(), Toast.LENGTH_SHORT)
                             .show()
                     }
                 }

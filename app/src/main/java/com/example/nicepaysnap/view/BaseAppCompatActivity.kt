@@ -6,12 +6,12 @@ import kotlinx.coroutines.delay
 
 open class BaseAppCompatActivity : AppCompatActivity() {
 
-    var responseEw = HashMap<String, String>()
+    var responseRest = HashMap<String, String>()
 
     suspend fun parseValue(responseData: HashMap<String, String>) {
         // perform parsing operation asynchronously
-        responseEw = responseData
-        while(responseEw.isEmpty()){
+        responseRest = responseData
+        while(responseRest.isEmpty()){
             delay(100)
         }
     }

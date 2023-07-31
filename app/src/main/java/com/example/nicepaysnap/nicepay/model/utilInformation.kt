@@ -13,6 +13,9 @@ class utilInformation {
     var ewalletEndPointUrl : String = "/api/v1.0/debit/payment-host-to-host"
         private set
 
+    var qrisEndPointUrl : String = "/api/v1.0/qr/qr-mpm-generate"
+        private set
+
     var ewalletInquiryEndPointUrl : String = "/api/v1.0/debit/status"
         private set
 
