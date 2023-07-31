@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.example.nicepaysnap.view.BaseAppCompatActivity
 import com.example.nicepaysnap.R
 import com.example.nicepaysnap.nicepay.model.RequestEwalletInquiry
 import com.example.nicepaysnap.nicepay.model.totalAmount
@@ -18,7 +17,7 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class EwalletInquiry : BaseAppCompatActivity() {
+class EwalletInquiry : BaseEwalletAppCompatActivity() {
 
     lateinit var inputOriginalReferenceNo : EditText
     lateinit var inputPartnerReferenceNo : EditText
@@ -75,7 +74,7 @@ class EwalletInquiry : BaseAppCompatActivity() {
                 lifecycleScope.launch {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         Log.i(this.toString() + " Response : ",
-                            parseValue(ewalletSnapUtil.checkStatus(requestEwalletInquiry)).toString())
+                            parseValue(ewalletService.checkStatus(requestEwalletInquiry)).toString())
 
                         if (responseEw.get("responseMessage").toString().contains("Success")) {
                             responseCode.setText(responseEw.get("responseCode").toString())

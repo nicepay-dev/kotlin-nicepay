@@ -12,7 +12,6 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.example.nicepaysnap.view.BaseAppCompatActivity
 import com.example.nicepaysnap.R
 import com.example.nicepaysnap.nicepay.model.RefundEwalletAdditionalInfo
 import com.example.nicepaysnap.nicepay.model.RequestEwalletRefund
@@ -22,7 +21,7 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class EwalletRefund : BaseAppCompatActivity() {
+class EwalletRefund : BaseEwalletAppCompatActivity() {
 
     lateinit var inputOriginalReferenceNo : EditText
     lateinit var inputPartnerReferenceNo : EditText
@@ -94,7 +93,7 @@ class EwalletRefund : BaseAppCompatActivity() {
                 lifecycleScope.launch {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         Log.i(this.toString() + " Response : ",
-                            parseValue(ewalletSnapUtil.refund(requestEwalletRefund)).toString())
+                            parseValue(ewalletService.refund(requestEwalletRefund)).toString())
 
                         Toast.makeText(applicationContext, "Response Refund : " +
                                 responseEw.get("responseMessage").toString() + " " +

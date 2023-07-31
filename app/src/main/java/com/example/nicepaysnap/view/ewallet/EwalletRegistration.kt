@@ -15,9 +15,7 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.example.nicepaysnap.view.BaseAppCompatActivity
 import com.example.nicepaysnap.R
-import com.example.nicepaysnap.nicepay.data.util.EwalletSnapUtil
 import com.example.nicepaysnap.nicepay.model.RequestEWalletAdditionalInfo
 import com.example.nicepaysnap.nicepay.model.RequestEwalletDirectDebit
 import com.example.nicepaysnap.nicepay.model.RequestEwalletUrlParam
@@ -26,7 +24,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 
 
-class EwalletRegistration : BaseAppCompatActivity() {
+class EwalletRegistration : BaseEwalletAppCompatActivity() {
 
     lateinit var goodsName: EditText
     lateinit var billingPhone: EditText
@@ -34,7 +32,6 @@ class EwalletRegistration : BaseAppCompatActivity() {
     lateinit var mitra: Spinner
     lateinit var regist: Button
     lateinit var buttonCloseLayout : ImageView
-    var register : EwalletSnapUtil = EwalletSnapUtil()
     var tOption : String? = "Select Mitra"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,7 +108,7 @@ class EwalletRegistration : BaseAppCompatActivity() {
                     if (amount.text.toString() == "") {
                         Toast.makeText(applicationContext, "Amount must not be empty", Toast.LENGTH_SHORT).show()
                     } else {
-                        Log.i(this.toString() + " Response : ", parseValue(register.register(ewalletRequest)).toString())
+                        Log.i(this.toString() + " Response : ", parseValue(ewalletService.register(ewalletRequest)).toString())
 
                         val redirectUrl = responseEw.get("webRedirectUrl").toString()
                         val responseRedirect = Uri.parse(redirectUrl)
