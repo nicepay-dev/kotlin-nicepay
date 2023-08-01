@@ -14,7 +14,8 @@ import kotlinx.coroutines.delay
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
-class EwalletServiceImpl : TokenUtil(), MethodService {
+class EwalletServiceImpl : TokenUtil(),
+    MethodService<RequestEwalletDirectDebit, RequestEwalletInquiry, RequestEwalletRefund> {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun register(request : RequestEwalletDirectDebit): HashMap<String, String> {

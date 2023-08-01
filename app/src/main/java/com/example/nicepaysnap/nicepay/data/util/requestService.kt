@@ -29,4 +29,9 @@ interface requestService {
     @Headers("Content-Type: application/json")
     @POST("api/v1.0/debit/refund")
     fun eWalletRefund(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestEwalletRefund): Call<ResponseRefundEwalletSnap>;
+
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/qr/qr-mpm-generate")
+    fun generateQr(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestQrisRegister): Call<ResponseQrisSnap>;
+
 }

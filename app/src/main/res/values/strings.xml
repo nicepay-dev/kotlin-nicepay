@@ -14,6 +14,9 @@
     <string name="login_password_hint">Amount</string>
     <string name="ewallet_goods_name">Goods Name</string>
     <string name="ewallet_billing_phone">Billing Phone</string>
+    <string name="qris_billing_name">Billing Name</string>
+    <string name="qris_merchant_id">Merchant Id</string>
+    <string name="qris_store_id">Store Id</string>
     <string name="ewallet_tx_id">Reference Transaction Id</string>
     <string name="ewallet_reference_no">Partner Reference No</string>
     <string name="ewallet_refund_reason">Reason to Refund</string>
@@ -44,6 +47,10 @@
         <item>ShopeePay</item>
         <item>LinkAja</item>
         <item>OVO</item>
+    </string-array>
+
+    <string-array name="mitraCodeQr">
+        <item>QRIS ShopeePay</item>
     </string-array>
 
     <string-array name="refundType">

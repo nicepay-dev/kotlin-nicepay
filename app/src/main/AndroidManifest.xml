@@ -29,6 +29,15 @@
             android:name=".view.qris.QrisMenu"
             android:exported="false" />
         <activity
+            android:name=".view.qris.QrisRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".view.qris.QrisInquiry"
+            android:exported="false" />
+        <activity
+            android:name=".view.qris.QrisRefund"
+            android:exported="false" />
+        <activity
             android:name=".view.ewallet.EwalletRegistration"
             android:exported="false" />
         <activity

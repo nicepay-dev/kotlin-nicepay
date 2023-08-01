@@ -8,16 +8,18 @@ import com.example.nicepaysnap.nicepay.data.util.encrypt
 import com.example.nicepaysnap.nicepay.model.RequestEwalletDirectDebit
 import com.example.nicepaysnap.nicepay.model.RequestEwalletInquiry
 import com.example.nicepaysnap.nicepay.model.RequestEwalletRefund
+import com.example.nicepaysnap.nicepay.model.RequestQrisRegister
 import com.example.nicepaysnap.service.MethodService
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
-class QrisServiceImpl : TokenUtil(), MethodService {
+class QrisServiceImpl : TokenUtil(),
+    MethodService<RequestQrisRegister, RequestQrisRegister, RequestQrisRegister> {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun register(request: RequestEwalletDirectDebit): HashMap<String, String> {
+    override suspend fun register(request: RequestQrisRegister): HashMap<String, String> {
         var responseQr = HashMap<String, String>()
         getAccessToken().await()
         while(accTok.equals("")){
@@ -53,7 +55,7 @@ class QrisServiceImpl : TokenUtil(), MethodService {
         headers["X-EXTERNAL-ID"] = utilInfo.clientKey + "" + dateFormated
         headers["X-PARTNER-ID"] = utilInfo.clientKey
 
-        apiService.generateEwalletDirectDebit(headers, request) {
+        apiService.generateQr(headers, request) {
             Log.e("response code : ", it?.responseCode.toString())
             if (it?.responseCode != null) {
                 responseQr = it?.toMap(HashMap()) as HashMap<String, String>
@@ -70,12 +72,12 @@ class QrisServiceImpl : TokenUtil(), MethodService {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun checkStatus(request: RequestEwalletInquiry): HashMap<String, String> {
+    override suspend fun checkStatus(request: RequestQrisRegister): HashMap<String, String> {
         TODO("Not yet implemented")
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun refund(request: RequestEwalletRefund): HashMap<String, String> {
+    override suspend fun refund(request: RequestQrisRegister): HashMap<String, String> {
         TODO("Not yet implemented")
     }
 

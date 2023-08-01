@@ -13,5 +13,9 @@ open class BaseAdditionalInfo {
         this.billingNm = billingNm
     }
 
+    constructor(goodsNm: String?, billingNm: String?) {
+        this.goodsNm = goodsNm
+        this.billingNm = billingNm
+    }
 
 }

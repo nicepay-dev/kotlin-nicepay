@@ -9,7 +9,7 @@ data class ResponseQrisSnap(
     @SerializedName("partnerReferenceNo") val partnerReferenceNo : String?,
     @SerializedName("qrContent") val qrContent : String?,
     @SerializedName("qrUrl") val qrUrl : String?,
-    @SerializedName("additionalInfo") val additionalInfo : BaseQrisAdditionalInfo?
+    @SerializedName("additionalInfo") val additionalInfo : BaseQrisResponseAdditionalInfo
 ) {
 
     fun toMap(hashMap: HashMap<Any, Any>): Map<String, Any?> {
@@ -20,6 +20,7 @@ data class ResponseQrisSnap(
             "partnerReferenceNo" to partnerReferenceNo,
             "qrContent" to qrContent,
             "qrUrl" to qrUrl,
+            "validityPeriod" to additionalInfo.validityPeriod
         )
     }
 

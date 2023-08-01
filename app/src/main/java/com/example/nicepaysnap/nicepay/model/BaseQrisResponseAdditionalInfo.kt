@@ -1,6 +1,6 @@
 package com.example.nicepaysnap.nicepay.model
 
-class BaseQrisAdditionalInfo : BaseAdditionalInfo {
+class BaseQrisResponseAdditionalInfo : BaseAdditionalInfo {
 
     var validityPeriod : String? = null
 

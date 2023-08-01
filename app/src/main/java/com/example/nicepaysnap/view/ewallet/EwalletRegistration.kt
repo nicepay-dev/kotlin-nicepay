@@ -111,7 +111,6 @@ class EwalletRegistration : BaseEwalletAppCompatActivity() {
                         Log.i(this.toString() + " Response : ", parseValue(ewalletService.register(ewalletRequest)).toString())
 
                         val redirectUrl = responseRest.get("webRedirectUrl").toString()
-                        val responseRedirect = Uri.parse(redirectUrl)
                         if (tOption.toString().equals("LINK")) {
                             linkProcess(responseRest.get("redirectToken").toString(), redirectUrl)
                         } else if (tOption.toString().equals("OVOE")) {
@@ -125,7 +124,7 @@ class EwalletRegistration : BaseEwalletAppCompatActivity() {
                         }
                         else {
                             val httpIntent = Intent(Intent.ACTION_VIEW)
-                            httpIntent.setData(responseRedirect)
+                            httpIntent.setData(Uri.parse(redirectUrl))
                             startActivity(httpIntent)
                         }
                     }

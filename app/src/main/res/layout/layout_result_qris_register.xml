@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/loginCard"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/loginViewsMargin"
+    android:layout_marginBottom="@dimen/loginViewsMargin"
+    android:background="@color/whiteCardColor"
+    android:elevation="5dp"
+    app:cardCornerRadius="@dimen/loginCardRadius">
+
+    <ScrollView style="@style/parent">
+
+        <LinearLayout
+            style="@style/linearParent"
+            android:layout_gravity="center"
+            android:padding="@dimen/loginViewsMargin">
+
+            <ImageView
+                android:id="@+id/imageQrResult"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:maxWidth="100dp"
+                android:minHeight="100dp"
+                android:src="@drawable/ic_qr" />
+
+            <TextView
+                style="@style/normalTextPrimary"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:gravity="left"
+                android:text="Transaction Id (txId)"
+                android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/resultTxId"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+
+                <EditText
+                    android:id="@+id/editResultTxId"
+                    style="@style/modifiedEditText"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/normalTextPrimary"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:gravity="left"
+                android:text="Reference No"
+                android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/resultReferenceNo"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+
+                <EditText
+                    android:id="@+id/editResultReferenceNo"
+                    style="@style/modifiedEditText"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/normalTextPrimary"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:gravity="left"
+                android:text="Validity Period"
+                android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/resultValidityPeriod"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+
+                <EditText
+                    android:id="@+id/editResultValidityPeriod"
+                    style="@style/modifiedEditText"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/normalTextPrimary"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:gravity="center"
+                android:text="Download QR Here"
+                android:textAlignment="gravity" />
+
+            <Button
+                android:id="@+id/buttonDownloadQr"
+                style="@style/downloadButton"
+                android:layout_width="wrap_content"
+                android:layout_height="74dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:textColor="#fff" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.cardview.widget.CardView>
