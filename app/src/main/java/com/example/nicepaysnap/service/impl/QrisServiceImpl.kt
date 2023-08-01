@@ -8,6 +8,7 @@ import com.example.nicepaysnap.nicepay.data.util.encrypt
 import com.example.nicepaysnap.nicepay.model.RequestEwalletDirectDebit
 import com.example.nicepaysnap.nicepay.model.RequestEwalletInquiry
 import com.example.nicepaysnap.nicepay.model.RequestEwalletRefund
+import com.example.nicepaysnap.nicepay.model.RequestQrisInquiry
 import com.example.nicepaysnap.nicepay.model.RequestQrisRegister
 import com.example.nicepaysnap.service.MethodService
 import com.google.gson.Gson
@@ -16,7 +17,7 @@ import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
 class QrisServiceImpl : TokenUtil(),
-    MethodService<RequestQrisRegister, RequestQrisRegister, RequestQrisRegister> {
+    MethodService<RequestQrisRegister, RequestQrisInquiry, RequestEwalletRefund> {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun register(request: RequestQrisRegister): HashMap<String, String> {
@@ -72,12 +73,12 @@ class QrisServiceImpl : TokenUtil(),
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun checkStatus(request: RequestQrisRegister): HashMap<String, String> {
+    override suspend fun checkStatus(request: RequestQrisInquiry): HashMap<String, String> {
         TODO("Not yet implemented")
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun refund(request: RequestQrisRegister): HashMap<String, String> {
+    override suspend fun refund(request: RequestEwalletRefund): HashMap<String, String> {
         TODO("Not yet implemented")
     }
 

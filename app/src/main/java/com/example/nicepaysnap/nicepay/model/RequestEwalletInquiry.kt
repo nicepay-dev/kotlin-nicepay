@@ -1,14 +1,9 @@
 package com.example.nicepaysnap.nicepay.model
 
-class RequestEwalletInquiry {
+class RequestEwalletInquiry : BaseRequestInquiry {
 
-    var merchantId: String? = "IONPAYTEST"
     var subMerchantId: String? = ""
-    var originalPartnerReferenceNo: String? = ""
-    var originalReferenceNo: String? = ""
-    var serviceCode: String? = "54"
     var transactionDate: String? = "2020-12-21T14:56:11+07:00"
-    var externalStoreId: String? = ""
     var amount: totalAmount? = null
     var additionalInfo: BaseEwalletAdditionalInfo? = null
 

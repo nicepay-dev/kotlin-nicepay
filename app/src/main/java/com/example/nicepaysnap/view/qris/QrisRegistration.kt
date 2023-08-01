@@ -2,12 +2,10 @@ package com.example.nicepaysnap.view.qris
 
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -23,7 +21,6 @@ import com.example.nicepaysnap.nicepay.model.RequestQrisAdditionalInfo
 import com.example.nicepaysnap.nicepay.model.RequestQrisRegister
 import com.example.nicepaysnap.nicepay.model.totalAmount
 import com.google.zxing.BarcodeFormat
-import com.google.zxing.EncodeHintType
 import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.coroutines.launch
 import java.text.DateFormat
