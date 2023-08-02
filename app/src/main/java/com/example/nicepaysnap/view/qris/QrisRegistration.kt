@@ -36,15 +36,13 @@ class QrisRegistration : BaseQrisAppCompatActivity() {
     lateinit var billingName: EditText
     lateinit var amount: EditText
     lateinit var mitra: Spinner
-    lateinit var regist: Button
-    lateinit var buttonCloseLayout : ImageView
     lateinit var imageQrResult : ImageView
     lateinit var buttonDownloadQr : Button
     var qrUrlResult : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_qris)
+        determineLayout(R.layout.activity_qris)
 
         var txId : EditText = findViewById(R.id.editResultTxId)
         var refNo : EditText = findViewById(R.id.editResultReferenceNo)
@@ -54,8 +52,6 @@ class QrisRegistration : BaseQrisAppCompatActivity() {
         billingName = findViewById(R.id.editTextBillingName)
         amount = findViewById(R.id.editTextEwalletAmount)
         mitra = findViewById(R.id.spinnerMitra)
-        regist = findViewById(R.id.registerEwalletButton)
-        buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
         imageQrResult = findViewById(R.id.imageQrResult)
         buttonDownloadQr = findViewById(R.id.buttonDownloadQr)
         var tOption : String? = "Select Mitra"
@@ -91,7 +87,7 @@ class QrisRegistration : BaseQrisAppCompatActivity() {
             super.onBackPressed()
         }
 
-        regist.setOnClickListener {
+        submit.setOnClickListener {
             val amountValue : totalAmount = totalAmount.Builder()
                 .setValue(amount.text.toString().trim()+".00")
                 .build()

@@ -60,7 +60,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/inquiryEwalletButton"
+            android:id="@+id/submitButton"
             style="@style/loginButton"
             android:textColor="#fff"
             android:text="Check Status"

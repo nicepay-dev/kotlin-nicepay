@@ -4,9 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.nicepaysnap.R
@@ -22,12 +20,10 @@ class EwalletInquiry : BaseEwalletAppCompatActivity() {
     lateinit var inputOriginalReferenceNo : EditText
     lateinit var inputPartnerReferenceNo : EditText
     lateinit var inputAmount : EditText
-    lateinit var buttonCheckStatus : Button
-    lateinit var buttonCloseLayout : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.inquiry_ewallet)
+        determineLayout(R.layout.inquiry_ewallet)
 
         var resultLayout  : View = findViewById(R.id.id_layout_result_ewallet_inquiry)
         resultLayout.setVisibility(View.GONE)
@@ -47,14 +43,12 @@ class EwalletInquiry : BaseEwalletAppCompatActivity() {
         inputOriginalReferenceNo = findViewById(R.id.editTxId)
         inputPartnerReferenceNo = findViewById(R.id.editReferenceNo)
         inputAmount = findViewById(R.id.editAmount)
-        buttonCheckStatus = findViewById(R.id.inquiryEwalletButton)
-        buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
 
         buttonCloseLayout.setOnClickListener {
             super.onBackPressed()
         }
 
-        buttonCheckStatus.setOnClickListener {
+        submit.setOnClickListener {
             if (inputAmount.text.toString() == "" || inputOriginalReferenceNo.text.toString() == ""
                 || inputPartnerReferenceNo.text.toString() == "") {
                 Toast.makeText(applicationContext,

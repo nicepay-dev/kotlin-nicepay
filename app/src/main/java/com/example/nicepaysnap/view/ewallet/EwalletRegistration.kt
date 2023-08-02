@@ -30,20 +30,16 @@ class EwalletRegistration : BaseEwalletAppCompatActivity() {
     lateinit var billingPhone: EditText
     lateinit var amount: EditText
     lateinit var mitra: Spinner
-    lateinit var regist: Button
-    lateinit var buttonCloseLayout : ImageView
     var tOption : String? = "Select Mitra"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ewallet)
+        determineLayout(R.layout.activity_ewallet)
 
         goodsName = findViewById(R.id.editTextGoodsName)
         billingPhone = findViewById(R.id.editTextBillingPhone)
         amount = findViewById(R.id.editTextEwalletAmount)
         mitra = findViewById(R.id.spinnerMitra)
-        regist = findViewById(R.id.registerEwalletButton)
-        buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
 
         val mitraOption = resources.getStringArray(R.array.mitraCode)
 
@@ -77,7 +73,7 @@ class EwalletRegistration : BaseEwalletAppCompatActivity() {
             super.onBackPressed()
         }
 
-        regist.setOnClickListener {
+        submit.setOnClickListener {
             val amountValue : totalAmount = totalAmount.Builder()
                 .setValue(amount.text.toString().trim()+".00")
                 .build()

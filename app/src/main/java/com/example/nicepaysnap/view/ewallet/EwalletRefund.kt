@@ -28,21 +28,17 @@ class EwalletRefund : BaseEwalletAppCompatActivity() {
     lateinit var inputAmount : EditText
     lateinit var inputReason : EditText
     lateinit var refundType: Spinner
-    lateinit var buttonRefund : Button
-    lateinit var buttonCloseLayout : ImageView
     var tOption : String? = "Select Refund Type"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.refund_ewallet)
+        determineLayout(R.layout.refund_ewallet)
 
         inputOriginalReferenceNo = findViewById(R.id.editTxId)
         inputPartnerReferenceNo = findViewById(R.id.editReferenceNo)
         inputAmount = findViewById(R.id.editAmount)
         inputReason = findViewById(R.id.editReason)
-        buttonRefund = findViewById(R.id.refundEwalletButton)
         refundType = findViewById(R.id.spinnerRefundType)
-        buttonCloseLayout = findViewById(R.id.buttonCloseLayout)
 
         buttonCloseLayout.setOnClickListener {
             super.onBackPressed()
@@ -72,7 +68,7 @@ class EwalletRefund : BaseEwalletAppCompatActivity() {
             }
         }
 
-        buttonRefund.setOnClickListener {
+        submit.setOnClickListener {
             if (inputAmount.text.toString() == "" || inputOriginalReferenceNo.text.toString() == ""
                 || inputPartnerReferenceNo.text.toString() == "" || inputReason.text.toString() == "") {
                 Toast.makeText(applicationContext,

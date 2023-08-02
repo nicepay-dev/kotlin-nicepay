@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
         <Button
-            android:id="@+id/registerEwalletButton"
+            android:id="@+id/submitButton"
             style="@style/loginButton"
             android:textColor="#fff"
             android:text="Register"
