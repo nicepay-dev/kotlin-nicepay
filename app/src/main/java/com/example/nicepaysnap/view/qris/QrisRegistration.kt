@@ -38,7 +38,12 @@ class QrisRegistration : BaseQrisAppCompatActivity() {
     lateinit var mitra: Spinner
     lateinit var imageQrResult : ImageView
     lateinit var buttonDownloadQr : Button
+    lateinit var storeId: EditText
+    lateinit var merchantId: EditText
     var qrUrlResult : String? = null
+
+    val DEFAULT_STORE_ID = "NICEPAY"
+    val DEFAULT_MERCHANT_ID = "IONPAYTEST"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +59,10 @@ class QrisRegistration : BaseQrisAppCompatActivity() {
         mitra = findViewById(R.id.spinnerMitra)
         imageQrResult = findViewById(R.id.imageQrResult)
         buttonDownloadQr = findViewById(R.id.buttonDownloadQr)
+        storeId = findViewById(R.id.editTexStoreId)
+        storeId.setText(DEFAULT_STORE_ID)
+        merchantId = findViewById(R.id.editTextMerchantId)
+        merchantId.setText(DEFAULT_MERCHANT_ID)
         var tOption : String? = "Select Mitra"
 
         val mitraOption = resources.getStringArray(R.array.mitraCodeQr)
@@ -94,7 +103,9 @@ class QrisRegistration : BaseQrisAppCompatActivity() {
 
             if (goodsName.text.toString() == "") goodsName.setText("Testing SNAP E-Wallet Item Name")
             if (billingName.text.toString() == "") billingName.setText("Testing SNAP E-Wallet Billing Name")
-            val additionalInfo : RequestQrisAdditionalInfo = RequestQrisAdditionalInfo(
+            if (storeId.text.toString() == "") storeId.setText(DEFAULT_STORE_ID)
+            if (merchantId.text.toString() == "") storeId.setText(DEFAULT_MERCHANT_ID)
+            val additionalInfo = RequestQrisAdditionalInfo(
                 tOption.toString(), goodsName.text.toString(), billingName.text.toString(),
                 "{\"count\":1,\"item\":[{\"img_url\":\"https://d3nevzfk7ii3be.cloudfront.net/igi/vOrGHXlovukA566A.medium\",\"goods_name\":${goodsName.text.toString()},\"goods_detail\":\"Goods Detail\",\"goods_amt\":${amount.text.toString()},\"goods_quantity\":\"1\"}]}",
                 "089876543210",
@@ -102,9 +113,9 @@ class QrisRegistration : BaseQrisAppCompatActivity() {
                 "DKI Jakarta", "12870", "Indonesia"
             )
 
-            val qrisRequest : RequestQrisRegister = RequestQrisRegister(
+            val qrisRequest = RequestQrisRegister(
                 "ref-" + SimpleDateFormat("yyyyMMddhhmmss").format(System.currentTimeMillis()),
-                amountValue, setValidityPeriod(), additionalInfo
+                amountValue, merchantId.text.toString(), storeId.text.toString(), setValidityPeriod(), additionalInfo
             )
 
             lifecycleScope.launch {

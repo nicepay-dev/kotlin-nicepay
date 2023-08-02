@@ -22,5 +22,35 @@ class RequestQrisRegister {
         this.additionalInfo = additionalInfo
     }
 
+    constructor(
+        partnerReferenceNo: String?,
+        amount: totalAmount?,
+        merchantId: String?,
+        storeId: String?,
+        validityPeriod: String?,
+        additionalInfo: RequestQrisAdditionalInfo?
+    ) {
+        this.partnerReferenceNo = partnerReferenceNo
+        this.amount = amount
+        this.merchantId = merchantId
+        this.storeId = storeId
+        this.validityPeriod = validityPeriod
+        this.additionalInfo = additionalInfo
+    }
+
+    constructor(
+        partnerReferenceNo: String?,
+        amount: totalAmount?,
+        storeId: String?,
+        validityPeriod: String?,
+        additionalInfo: RequestQrisAdditionalInfo?
+    ) {
+        this.partnerReferenceNo = partnerReferenceNo
+        this.amount = amount
+        this.storeId = storeId
+        this.validityPeriod = validityPeriod
+        this.additionalInfo = additionalInfo
+    }
+
 
 }
