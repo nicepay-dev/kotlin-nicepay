@@ -45,6 +45,7 @@
 
 
                 <TextView
+                    android:id="@+id/paymentMethodTitle"
                     style="@style/headerText"
                     android:layout_gravity="center"
                     android:text="Refund E-Wallet Form"
