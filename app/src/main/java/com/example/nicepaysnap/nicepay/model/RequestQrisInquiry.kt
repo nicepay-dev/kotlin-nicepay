@@ -2,7 +2,9 @@ package com.example.nicepaysnap.nicepay.model
 
 class RequestQrisInquiry : BaseRequestInquiry {
 
-    var additionalInfo : RequestQrisAdditionalInfo? = null
+    var additionalInfo : RequestQrisAdditionalInfo? = RequestQrisAdditionalInfo()
+
+    constructor() : super()
 
     constructor(
         originalPartnerReferenceNo: String?,
@@ -35,6 +37,20 @@ class RequestQrisInquiry : BaseRequestInquiry {
         originalReferenceNo: String?,
         serviceCode: String?
     ) : super(originalPartnerReferenceNo, originalReferenceNo, serviceCode)
+
+    constructor(
+        merchantId: String?,
+        originalPartnerReferenceNo: String?,
+        originalReferenceNo: String?,
+        serviceCode: String?,
+        externalStoreId: String?
+    ) : super(
+        merchantId,
+        originalPartnerReferenceNo,
+        originalReferenceNo,
+        serviceCode,
+        externalStoreId
+    )
 
 
 }

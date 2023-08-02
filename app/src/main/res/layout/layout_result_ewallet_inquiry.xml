@@ -148,6 +148,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/textLatestTransactionStatusDesc"
                 style="@style/normalTextPrimary"
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:gravity="left"
@@ -232,6 +233,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/textBillingPhone"
                 style="@style/normalTextPrimary"
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:gravity="left"

@@ -12,4 +12,7 @@ open class BaseQrisAppCompatActivity : BaseAppCompatActivity() {
     var qrisService : MethodService
     <RequestQrisRegister, RequestQrisInquiry, RequestEwalletRefund> = QrisServiceImpl()
 
+    val DEFAULT_STORE_ID = "NICEPAY"
+    val DEFAULT_MERCHANT_ID = "IONPAYTEST"
+
 }

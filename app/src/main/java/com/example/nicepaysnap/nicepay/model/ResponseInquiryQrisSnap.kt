@@ -10,9 +10,8 @@ data class ResponseInquiryQrisSnap(
     @SerializedName("serviceCode") val serviceCode : String?,
     @SerializedName("latestTransactionStatus") val latestTransactionStatus : String?,
     @SerializedName("paidTime") val paidTime : String?,
-    @SerializedName("goodsNm") val goodsNm : String?,
-    @SerializedName("billingNm") val billingNm : String?,
     @SerializedName("amount") val transAmount : totalAmount,
+    @SerializedName("additionalInfo") val additionalInfo : BaseAdditionalInfo,
 ) {
     fun toMap(hashMap: HashMap<Any, Any>): Map<String, Any?> {
         return mapOf(
@@ -24,7 +23,10 @@ data class ResponseInquiryQrisSnap(
             "latestTransactionStatus" to latestTransactionStatus,
             "amountValue" to transAmount.value,
             "amountCurrency" to transAmount.currency,
-            "paidTime" to paidTime
+            "mitraCd" to additionalInfo.mitraCd,
+            "paidTime" to paidTime,
+            "goodsNm" to additionalInfo.goodsNm,
+            "billingNm" to additionalInfo.billingNm
         )
     }
 }

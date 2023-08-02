@@ -36,4 +36,19 @@ open class BaseRequestInquiry {
         this.externalStoreId = externalStoreId
     }
 
+    constructor(
+        merchantId: String?,
+        originalPartnerReferenceNo: String?,
+        originalReferenceNo: String?,
+        serviceCode: String?,
+        externalStoreId: String?
+    ) {
+        this.merchantId = merchantId
+        this.originalPartnerReferenceNo = originalPartnerReferenceNo
+        this.originalReferenceNo = originalReferenceNo
+        this.serviceCode = serviceCode
+        this.externalStoreId = externalStoreId
+    }
+
+
 }

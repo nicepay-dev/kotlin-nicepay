@@ -34,4 +34,8 @@ interface requestService {
     @POST("api/v1.0/qr/qr-mpm-generate")
     fun generateQr(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestQrisRegister): Call<ResponseQrisSnap>;
 
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/qr/qr-mpm-query")
+    fun checkStatusQr(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestQrisInquiry): Call<ResponseInquiryQrisSnap>;
+
 }

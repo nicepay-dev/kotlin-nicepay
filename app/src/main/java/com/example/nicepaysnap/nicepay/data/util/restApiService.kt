@@ -118,4 +118,23 @@ class restApiService {
         )
     }
 
+    fun checkStatusQr(headers: Map<String, String>, request: RequestQrisInquiry, onResult: (ResponseInquiryQrisSnap?) -> Unit){
+        val retrofit = retrofitClient.buildService(requestService::class.java)
+
+        Log.e("body request", Gson().toJson(request))
+        retrofit.checkStatusQr(headers, request).enqueue(
+            object : Callback<ResponseInquiryQrisSnap> {
+                override fun onFailure(call: Call<ResponseInquiryQrisSnap>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<ResponseInquiryQrisSnap>, response: Response<ResponseInquiryQrisSnap>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+                    val vaNumber = response.body()
+                    onResult(vaNumber)
+                }
+            }
+        )
+    }
+
 }

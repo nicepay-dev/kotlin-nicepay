@@ -42,9 +42,6 @@ class QrisRegistration : BaseQrisAppCompatActivity() {
     lateinit var merchantId: EditText
     var qrUrlResult : String? = null
 
-    val DEFAULT_STORE_ID = "NICEPAY"
-    val DEFAULT_MERCHANT_ID = "IONPAYTEST"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         determineLayout(R.layout.activity_qris)
