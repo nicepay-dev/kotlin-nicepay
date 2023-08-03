@@ -1,18 +1,12 @@
 package com.example.nicepaysnap.nicepay.model
 
-class RequestEwalletRefund {
+class RequestEwalletRefund : BaseRequestRefund {
 
-    var merchantId: String? = "IONPAYTEST"
     var subMerchantId: String? = ""
-    var originalPartnerReferenceNo: String? = ""
-    var originalReferenceNo: String? = ""
-    var reason: String? = null
-    var partnerRefundNo: String? = "test-refund-no"
-    var externalStoreId: String? = ""
-    var refundAmount: totalAmount? = null
-    var additionalInfo: RefundEwalletAdditionalInfo? = null
+    var additionalInfo: RefundEwalletAdditionalInfo? = RefundEwalletAdditionalInfo()
 
     constructor()
+
     constructor(
         originalPartnerReferenceNo: String?,
         originalReferenceNo: String?,
@@ -20,14 +14,14 @@ class RequestEwalletRefund {
         partnerRefundNo: String?,
         refundAmount: totalAmount?,
         additionalInfo: RefundEwalletAdditionalInfo?
+    ) : super(
+        originalPartnerReferenceNo,
+        originalReferenceNo,
+        reason,
+        partnerRefundNo,
+        refundAmount
     ) {
-        this.originalPartnerReferenceNo = originalPartnerReferenceNo
-        this.originalReferenceNo = originalReferenceNo
-        this.reason = reason
-        this.partnerRefundNo = partnerRefundNo
-        this.refundAmount = refundAmount
         this.additionalInfo = additionalInfo
     }
-
 
 }

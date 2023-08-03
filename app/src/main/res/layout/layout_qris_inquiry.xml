@@ -70,19 +70,6 @@
                 android:hint="@string/qris_store_id"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputAmount"
-            style="@style/parent"
-            android:layout_marginTop="@dimen/loginViewsMargin">
-            <EditText
-                android:id="@+id/editAmount"
-                style="@style/modifiedEditText"
-                android:inputType="number|none"
-                android:digits="0123456789"
-                android:hint="@string/ewallet_amount"
-                android:maxLines="1"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
         <Button
             android:id="@+id/submitButton"
             style="@style/loginButton"

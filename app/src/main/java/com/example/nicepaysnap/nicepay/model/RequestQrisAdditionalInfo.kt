@@ -25,6 +25,31 @@ class RequestQrisAdditionalInfo : BaseCommonAdditionalInfo {
         billingAddr: String?,
         billingState: String?,
         billingPostCd: String?,
+        billingCountry: String?
+    ) : super(mitraCd, goodsNm, billingNm, dbProcessUrl, callBackUrl, cartData) {
+        this.billingPhone = billingPhone
+        this.billingEmail = billingEmail
+        this.billingCity = billingCity
+        this.billingAddr = billingAddr
+        this.billingState = billingState
+        this.billingPostCd = billingPostCd
+        this.billingCountry = billingCountry
+        this.userIP = userIP
+    }
+
+    constructor(
+        mitraCd: String?,
+        goodsNm: String?,
+        billingNm: String?,
+        dbProcessUrl: String?,
+        callBackUrl: String?,
+        cartData: String?,
+        billingPhone: String?,
+        billingEmail: String?,
+        billingCity: String?,
+        billingAddr: String?,
+        billingState: String?,
+        billingPostCd: String?,
         billingCountry: String?,
         userIP: String?
     ) : super(mitraCd, goodsNm, billingNm, dbProcessUrl, callBackUrl, cartData) {

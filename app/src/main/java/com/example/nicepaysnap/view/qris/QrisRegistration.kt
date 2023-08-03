@@ -104,6 +104,7 @@ class QrisRegistration : BaseQrisAppCompatActivity() {
             if (merchantId.text.toString() == "") storeId.setText(DEFAULT_MERCHANT_ID)
             val additionalInfo = RequestQrisAdditionalInfo(
                 tOption.toString(), goodsName.text.toString(), billingName.text.toString(),
+                "http://ptsv2.com/t/dbProcess/post", "https://www.nicepay.co.id/IONPAY_CLIENT/paymentResult.jsp",
                 "{\"count\":1,\"item\":[{\"img_url\":\"https://d3nevzfk7ii3be.cloudfront.net/igi/vOrGHXlovukA566A.medium\",\"goods_name\":${goodsName.text.toString()},\"goods_detail\":\"Goods Detail\",\"goods_amt\":${amount.text.toString()},\"goods_quantity\":\"1\"}]}",
                 "089876543210",
                 "testing.ionpaytest@nicepay.co.id", "Jakarta Selatan", "Jl. Raya Casablanca Raya",

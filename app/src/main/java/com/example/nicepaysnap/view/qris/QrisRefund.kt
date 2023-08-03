@@ -1,14 +1,25 @@
 package com.example.nicepaysnap.view.qris
 
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.example.nicepaysnap.R
+import com.example.nicepaysnap.nicepay.model.RefundQrisAdditionalInfo
+import com.example.nicepaysnap.nicepay.model.RequestQrisRefund
+import com.example.nicepaysnap.nicepay.model.totalAmount
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.launch
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class QrisRefund : BaseQrisAppCompatActivity() {
 
@@ -66,13 +77,47 @@ class QrisRefund : BaseQrisAppCompatActivity() {
 
                     if (optionRefundType[position].toString().equals("Full"))
                         tOption = "1"
-                    else if (optionRefundType[position].toString().equals("Partial"))
-                        tOption = "2"
-                    else tOption = "0"
+                    else tOption = "2"
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
                     // write code to perform some action
+                }
+            }
+        }
+
+        submit.setOnClickListener {
+            if (storeId.text.toString() == "") storeId.setText(DEFAULT_STORE_ID)
+            if (merchantId.text.toString() == "") storeId.setText(DEFAULT_MERCHANT_ID)
+
+            if (inputAmount.text.toString() == "" || inputOriginalReferenceNo.text.toString() == ""
+                || inputPartnerReferenceNo.text.toString() == "" || inputReason.text.toString() == "") {
+                Toast.makeText(applicationContext,
+                    "Amount, Reason, Original Reference No and Partner Reference No must not be empty",
+                    Toast.LENGTH_SHORT).show()
+            } else {
+                val amount : totalAmount = totalAmount.Builder()
+                    .setValue(inputAmount.text.toString().trim()+".00")
+                    .build()
+
+                val dateFormat : DateFormat = SimpleDateFormat("yyyyMMddHHmmss")
+                val requestQrisRefund = RequestQrisRefund(
+                    merchantId.text.toString(), inputPartnerReferenceNo.text.toString(),
+                    inputOriginalReferenceNo.text.toString(), inputReason.text.toString(),
+                    "ref_refund-" + dateFormat.format(Date()), storeId.text.toString(),
+                    amount, RefundQrisAdditionalInfo(tOption)
+                )
+
+                lifecycleScope.launch {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        Log.i(this.toString() + " Response : ",
+                            parseValue(qrisService.refund(requestQrisRefund)).toString())
+
+                        Toast.makeText(applicationContext, "Response Refund : " +
+                                responseRest.get("responseMessage").toString() + " " +
+                                responseRest.get("responseCode").toString(), Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
         }

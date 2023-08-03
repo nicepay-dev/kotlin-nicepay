@@ -57,9 +57,7 @@ class EwalletRefund : BaseEwalletAppCompatActivity() {
 
                     if (optionRefundType[position].toString().equals("Full"))
                         tOption = "1"
-                    else if (optionRefundType[position].toString().equals("Partial"))
-                        tOption = "2"
-                    else tOption = "0"
+                    else tOption = "2"
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {

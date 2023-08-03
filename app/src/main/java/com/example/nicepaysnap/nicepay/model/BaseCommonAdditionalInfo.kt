@@ -2,9 +2,9 @@ package com.example.nicepaysnap.nicepay.model
 
 open class BaseCommonAdditionalInfo : BaseAdditionalInfo {
 
-    var dbProcessUrl: String? = "http://ptsv2.com/t/dbProcess/post"
-    var callBackUrl: String? = "https://www.nicepay.co.id/IONPAY_CLIENT/paymentResult.jsp"
-    var cartData: String? = "{\"count\":\"1\",\"item\":[{\"img_url\":\"http://img.aaa.com/ima1.jpg\",\"goods_name\":\"${goodsNm}\",\"goods_detail\":\"Item Detail\",\"goods_amt\":%s,\"goods_quantity\":\"1\"}]}"
+    var dbProcessUrl: String? = null
+    var callBackUrl: String? = null
+    var cartData: String? = null
 
     constructor()
 

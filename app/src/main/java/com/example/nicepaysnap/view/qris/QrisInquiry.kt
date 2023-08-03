@@ -17,7 +17,6 @@ class QrisInquiry : BaseQrisAppCompatActivity() {
 
     lateinit var inputOriginalReferenceNo : EditText
     lateinit var inputPartnerReferenceNo : EditText
-    lateinit var inputAmount : EditText
     lateinit var storeId: EditText
     lateinit var merchantId: EditText
 
@@ -48,7 +47,6 @@ class QrisInquiry : BaseQrisAppCompatActivity() {
 
         inputOriginalReferenceNo = findViewById(R.id.editTxId)
         inputPartnerReferenceNo = findViewById(R.id.editReferenceNo)
-        inputAmount = findViewById(R.id.editAmount)
         storeId = findViewById(R.id.editTexStoreId)
         storeId.setText(DEFAULT_STORE_ID)
         merchantId = findViewById(R.id.editTextMerchantId)
@@ -62,16 +60,12 @@ class QrisInquiry : BaseQrisAppCompatActivity() {
             if (storeId.text.toString() == "") storeId.setText(DEFAULT_STORE_ID)
             if (merchantId.text.toString() == "") storeId.setText(DEFAULT_MERCHANT_ID)
 
-            if (inputAmount.text.toString() == "" || inputOriginalReferenceNo.text.toString() == ""
+            if (inputOriginalReferenceNo.text.toString() == ""
                 || inputPartnerReferenceNo.text.toString() == "") {
                 Toast.makeText(applicationContext,
-                    "Amount, Original Reference No and Partner Reference No must not be empty",
+                    "Original Reference No and Partner Reference No must not be empty",
                     Toast.LENGTH_SHORT).show()
             } else {
-                val amount : totalAmount = totalAmount.Builder()
-                    .setValue(inputAmount.text.toString().trim()+".00")
-                    .build()
-
                 val requestQrisInqury = RequestQrisInquiry(
                     merchantId.text.toString(), inputPartnerReferenceNo.text.toString(),
                     inputOriginalReferenceNo.text.toString(), "51", storeId.text.toString()

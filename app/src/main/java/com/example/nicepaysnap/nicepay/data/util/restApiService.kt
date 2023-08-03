@@ -18,6 +18,7 @@ class restApiService {
                 override fun onResponse( call: Call<accessTokenResponse>, response: Response<accessTokenResponse>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
                     val newAccessToken = response.body()
                     onResult(newAccessToken)
                 }
@@ -35,6 +36,7 @@ class restApiService {
                 override fun onResponse( call: Call<responseVaSNAP>, response: Response<responseVaSNAP>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
                     val vaNumber = response.body()
                     onResult(vaNumber)
                 }
@@ -54,6 +56,7 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseEwalletSnap>, response: Response<ResponseEwalletSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
                     val vaNumber = response.body()
                     onResult(vaNumber)
                 }
@@ -73,6 +76,7 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseInquiryEwalletSnap>, response: Response<ResponseInquiryEwalletSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
                     val vaNumber = response.body()
                     onResult(vaNumber)
                 }
@@ -92,6 +96,7 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseRefundEwalletSnap>, response: Response<ResponseRefundEwalletSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
                     val vaNumber = response.body()
                     onResult(vaNumber)
                 }
@@ -111,6 +116,7 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseQrisSnap>, response: Response<ResponseQrisSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
                     val vaNumber = response.body()
                     onResult(vaNumber)
                 }
@@ -130,6 +136,27 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseInquiryQrisSnap>, response: Response<ResponseInquiryQrisSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
+                    val vaNumber = response.body()
+                    onResult(vaNumber)
+                }
+            }
+        )
+    }
+
+    fun refundQr(headers: Map<String, String>, request: RequestQrisRefund, onResult: (ResponseRefundQrisSnap?) -> Unit){
+        val retrofit = retrofitClient.buildService(requestService::class.java)
+
+        Log.e("body request", Gson().toJson(request))
+        retrofit.refundQr(headers, request).enqueue(
+            object : Callback<ResponseRefundQrisSnap> {
+                override fun onFailure(call: Call<ResponseRefundQrisSnap>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<ResponseRefundQrisSnap>, response: Response<ResponseRefundQrisSnap>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
                     val vaNumber = response.body()
                     onResult(vaNumber)
                 }

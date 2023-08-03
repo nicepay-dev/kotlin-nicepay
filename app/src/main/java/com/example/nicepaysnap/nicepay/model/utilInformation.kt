@@ -25,6 +25,10 @@ class utilInformation {
     var qrisInquiryEndPointUrl : String = "/api/v1.0/qr/qr-mpm-query"
         private set
 
+
+    var qrisRefundEndPointUrl : String = "/api/v1.0/qr/qr-mpm-refund"
+        private set
+
     var clientKey : String = "IONPAYTEST"
         private set
 

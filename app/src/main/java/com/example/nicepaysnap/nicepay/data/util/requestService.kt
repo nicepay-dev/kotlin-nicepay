@@ -38,4 +38,8 @@ interface requestService {
     @POST("api/v1.0/qr/qr-mpm-query")
     fun checkStatusQr(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestQrisInquiry): Call<ResponseInquiryQrisSnap>;
 
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/qr/qr-mpm-refund")
+    fun refundQr(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestQrisRefund): Call<ResponseRefundQrisSnap>;
+
 }
