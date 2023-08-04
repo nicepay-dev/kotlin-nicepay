@@ -3,7 +3,7 @@ package com.example.nicepaysnap.nicepay.model
 import com.google.gson.annotations.SerializedName
 
 data class ResponseInquiryQrisSnap(
-    @SerializedName("responseCode") val responseCode: Int?,
+    @SerializedName("responseCode") val responseCode: String?,
     @SerializedName("responseMessage") val responseMessage: String?,
     @SerializedName("originalPartnerReferenceNo") val partnerReferenceNo : String?,
     @SerializedName("originalReferenceNo") val originalReferenceNo : String?,
@@ -13,6 +13,12 @@ data class ResponseInquiryQrisSnap(
     @SerializedName("amount") val transAmount : totalAmount,
     @SerializedName("additionalInfo") val additionalInfo : BaseAdditionalInfo,
 ) {
+
+    constructor(
+        responseCode: String, responseMessage: String
+    ) : this(responseCode, responseMessage, null, null, null,
+        null, null, totalAmount.Builder().build(), BaseAdditionalInfo())
+
     fun toMap(hashMap: HashMap<Any, Any>): Map<String, Any?> {
         return mapOf(
             "responseCode" to responseCode,

@@ -11,6 +11,12 @@ data class ResponseRefundQrisSnap(
     @SerializedName("partnerRefundNo") val partnerRefundNo : String?,
     @SerializedName("refundAmount") val refundAmount : totalAmount
 ) {
+
+    constructor(
+        responseCode: String, responseMessage: String
+    ) : this(responseCode, responseMessage, null, null, null,
+        null, totalAmount.Builder().build())
+
     fun toMap(hashMap: HashMap<Any, Any>): Map<String, Any?> {
         return mapOf(
             "responseCode" to responseCode,

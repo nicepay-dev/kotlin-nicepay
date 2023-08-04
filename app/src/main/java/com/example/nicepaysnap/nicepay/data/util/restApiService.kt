@@ -76,9 +76,22 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseInquiryEwalletSnap>, response: Response<ResponseInquiryEwalletSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
-                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
-                    val vaNumber = response.body()
-                    onResult(vaNumber)
+
+                    var responseError = "none"
+                    response.errorBody()?.let {
+                        responseError = it.string()
+                    }
+                    Log.e("responseErrorString", responseError)
+
+                    if (response.isSuccessful) onResult(response.body())
+                    else {
+                        var responseErrorMap : Map<String, Any> = HashMap()
+                        responseErrorMap = Gson().fromJson(responseError, responseErrorMap.javaClass)
+                        onResult(ResponseInquiryEwalletSnap(
+                            responseErrorMap.get("responseCode").toString(),
+                            responseErrorMap.get("responseMessage").toString()
+                        ))
+                    }
                 }
             }
         )
@@ -96,9 +109,22 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseRefundEwalletSnap>, response: Response<ResponseRefundEwalletSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
-                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
-                    val vaNumber = response.body()
-                    onResult(vaNumber)
+
+                    var responseError = "none"
+                    response.errorBody()?.let {
+                        responseError = it.string()
+                    }
+                    Log.e("responseErrorString", responseError)
+
+                    if (response.isSuccessful) onResult(response.body())
+                    else {
+                        var responseErrorMap : Map<String, Any> = HashMap()
+                        responseErrorMap = Gson().fromJson(responseError, responseErrorMap.javaClass)
+                        onResult(ResponseRefundEwalletSnap(
+                            responseErrorMap.get("responseCode").toString(),
+                            responseErrorMap.get("responseMessage").toString()
+                        ))
+                    }
                 }
             }
         )
@@ -136,9 +162,22 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseInquiryQrisSnap>, response: Response<ResponseInquiryQrisSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
-                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
-                    val vaNumber = response.body()
-                    onResult(vaNumber)
+
+                    var responseError = "none"
+                    response.errorBody()?.let {
+                        responseError = it.string()
+                    }
+                    Log.e("responseErrorString", responseError)
+
+                    if (response.isSuccessful) onResult(response.body())
+                    else {
+                        var responseErrorMap : Map<String, Any> = HashMap()
+                        responseErrorMap = Gson().fromJson(responseError, responseErrorMap.javaClass)
+                        onResult(ResponseInquiryQrisSnap(
+                            responseErrorMap.get("responseCode").toString(),
+                            responseErrorMap.get("responseMessage").toString()
+                        ))
+                    }
                 }
             }
         )
@@ -156,9 +195,22 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseRefundQrisSnap>, response: Response<ResponseRefundQrisSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
-                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
-                    val vaNumber = response.body()
-                    onResult(vaNumber)
+
+                    var responseError = "none"
+                    response.errorBody()?.let {
+                        responseError = it.string()
+                    }
+                    Log.e("responseErrorString", responseError)
+
+                    if (response.isSuccessful) onResult(response.body())
+                    else {
+                        var responseErrorMap : Map<String, Any> = HashMap()
+                        responseErrorMap = Gson().fromJson(responseError, responseErrorMap.javaClass)
+                        onResult(ResponseRefundQrisSnap(
+                            responseErrorMap.get("responseCode").toString(),
+                            responseErrorMap.get("responseMessage").toString()
+                        ))
+                    }
                 }
             }
         )

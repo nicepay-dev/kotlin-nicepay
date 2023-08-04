@@ -105,7 +105,8 @@ class QrisInquiry : BaseQrisAppCompatActivity() {
                             resultLayout.setVisibility(View.VISIBLE)
                         } else {
                             Toast.makeText(applicationContext, "Response Inquiry : " +
-                                    responseRest.get("responseMessage").toString(), Toast.LENGTH_SHORT
+                                    responseRest.get("responseMessage").toString() + ", Response Code : "
+                                    + responseRest.get("responseCode").toString(), Toast.LENGTH_SHORT
                             ).show()
                         }
                     }
