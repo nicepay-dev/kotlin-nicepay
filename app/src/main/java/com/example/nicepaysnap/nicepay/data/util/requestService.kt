@@ -42,4 +42,8 @@ interface requestService {
     @POST("api/v1.0/qr/qr-mpm-refund")
     fun refundQr(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestQrisRefund): Call<ResponseRefundQrisSnap>;
 
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/transfer/registration")
+    fun generatePayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutRegistration): Call<ResponseQrisSnap>;
+
 }

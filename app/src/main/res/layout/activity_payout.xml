@@ -4,7 +4,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:orientation="vertical"
                 style="@style/loginParent"
-                tools:context=".view.ewallet.EwalletRegistration">
+                tools:context=".view.payout.PayoutRegistration">
 
     <ScrollView
             style="@style/parent">
@@ -47,13 +47,13 @@
                 <TextView
                         style="@style/headerText"
                         android:layout_gravity="center"
-                        android:text="Register QRIS Form"
+                        android:text="Register Payout Form"
                         android:layout_marginTop="40dp"/>
                 <include
-                        layout="@layout/layout_qris_form"/>
+                        layout="@layout/layout_payout_form"/>
                 <include
-                        android:id="@+id/id_layout_result_generate_qr"
-                        layout="@layout/layout_result_qris_register"/>
+                        android:id="@+id/id_layout_result_generate_payout"
+                        layout="@layout/layout_result_payout_register"/>
 
             </LinearLayout>
             <ImageView

@@ -23,6 +23,11 @@
     <string name="ewallet_amount">Amount</string>
     <string name="signup_login_hint">Already have an account? Sign In</string>
     <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+    <string name="payout_beneficiary_no">Beneficiary Number (Account Number)</string>
+    <string name="payout_beneficiary_name">Beneficiary Name</string>
+    <string name="payout_beneficiary_phone">Beneficiary Phone Number</string>
+    <string name="payout_reserved_date">Reserved Date</string>
+    <string name="payout_reserved_time">Reserved Time</string>
 
     <string name="register">REGISTER</string>
     <string name="inquiry">CHECK STATUS</string>
@@ -56,5 +61,17 @@
     <string-array name="refundType">
         <item>Full</item>
         <item>Partial</item>
+    </string-array>
+
+    <string-array name="payoutBankCode">
+        <item>BMRI</item>
+        <item>BDIN</item>
+    </string-array>
+
+    <string-array name="payoutMethod">
+        <item>Internal Transfer</item>
+        <item>Online Transfer</item>
+        <item>SKN</item>
+        <item>RTGS</item>
     </string-array>
 </resources>

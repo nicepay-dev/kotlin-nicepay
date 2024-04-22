@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var addFAB: FloatingActionButton
     lateinit var homeFAB: FloatingActionButton
     lateinit var qrFAB: FloatingActionButton
+    lateinit var payoutFAB: FloatingActionButton
     lateinit var settingsFAB: FloatingActionButton
     var fabVisible = false
 
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         homeFAB = findViewById(R.id.idFABHome)
         settingsFAB = findViewById(R.id.idFABSettings)
         qrFAB = findViewById(R.id.idFABQr)
+        payoutFAB = findViewById(R.id.idFABReceipt)
 
         fabVisible = false
 
@@ -49,10 +51,12 @@ class MainActivity : AppCompatActivity() {
                 homeFAB.show()
                 settingsFAB.show()
                 qrFAB.show()
+                payoutFAB.show()
 
                 homeFAB.visibility = View.VISIBLE
                 settingsFAB.visibility = View.VISIBLE
                 qrFAB.visibility = View.VISIBLE
+                payoutFAB.visibility = View.VISIBLE
 
                 addFAB.setImageDrawable(resources.getDrawable(R.drawable.ic_close))
 
@@ -71,15 +75,22 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
+                qrFAB.setOnClickListener {
+                    val intent = Intent(this, QrisMenu::class.java)
+                    startActivity(intent)
+                }
+
                 fabVisible = true
             } else {
                 homeFAB.hide()
                 settingsFAB.hide()
                 qrFAB.hide()
+                payoutFAB.hide()
 
                 homeFAB.visibility = View.GONE
                 settingsFAB.visibility = View.GONE
                 qrFAB.visibility = View.GONE
+                payoutFAB.visibility = View.GONE
 
                 addFAB.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_shopping_cart))
 

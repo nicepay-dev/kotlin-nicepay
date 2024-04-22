@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/loginCard"
+        app:cardCornerRadius="@dimen/loginCardRadius"
+        android:elevation="5dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/loginViewsMargin"
+        android:layout_marginBottom="@dimen/loginViewsMargin"
+        android:background="@color/whiteCardColor">
+
+
+
+    <LinearLayout
+            style="@style/linearParent"
+            android:layout_gravity="center"
+            android:padding="@dimen/loginViewsMargin">
+
+        <TextView
+                style="@style/headerTextPrimary"
+                android:text="Payout"
+                android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/payoutBank"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <Spinner
+                    android:id="@+id/spinnerPayoutBank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textMitra"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <Spinner
+                    android:id="@+id/spinnerPayoutMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputBeneficiaryAccountNo"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editTextBeneficiaryAccountNo"
+                    style="@style/modifiedEditText"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:hint="@string/payout_beneficiary_no"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputBeneficiaryName"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editTextBeneficiaryName"
+                    style="@style/modifiedEditText"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:hint="@string/payout_beneficiary_name"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputAmount"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editTextPayoutAmount"
+                    style="@style/modifiedEditText"
+                    android:inputType="number|none"
+                    android:digits="0123456789"
+                    android:hint="@string/ewallet_amount"
+                    android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputBeneficiaryPhone"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editTextBeneficiaryPhone"
+                    style="@style/modifiedEditText"
+                    android:inputType="number|none"
+                    android:digits="0123456789"
+                    android:maxLines="1"
+                    android:hint="@string/payout_beneficiary_phone"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputReservedDate"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editTextReservedDate"
+                    style="@style/modifiedEditText"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:hint="@string/payout_reserved_date"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputReservedTime"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editTextReservedTime"
+                    style="@style/modifiedEditText"
+                    android:inputType="time"
+                    android:maxLines="1"
+                    android:hint="@string/payout_reserved_time"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+                android:id="@+id/submitButton"
+                style="@style/loginButton"
+                android:textColor="#fff"
+                android:text="Register"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

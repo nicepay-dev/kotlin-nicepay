@@ -216,4 +216,24 @@ class restApiService {
         )
     }
 
+    fun generatePayout(headers: Map<String, String>, request: RequestPayoutRegistration, onResult: (ResponseQrisSnap?) -> Unit){
+        val retrofit = retrofitClient.buildService(requestService::class.java)
+
+        Log.e("body request", Gson().toJson(request))
+        retrofit.generatePayout(headers, request).enqueue(
+            object : Callback<ResponseQrisSnap> {
+                override fun onFailure(call: Call<ResponseQrisSnap>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<ResponseQrisSnap>, response: Response<ResponseQrisSnap>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
+                    val vaNumber = response.body()
+                    onResult(vaNumber)
+                }
+            }
+        )
+    }
+
 }
