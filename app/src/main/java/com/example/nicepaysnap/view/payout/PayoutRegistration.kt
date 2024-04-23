@@ -11,6 +11,7 @@ import com.example.nicepaysnap.nicepay.model.RequestPayoutRegistration
 import com.example.nicepaysnap.nicepay.model.totalAmount
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.util.*
 
 class PayoutRegistration : BasePayoutAppCompatActivity() {
 
@@ -33,6 +34,7 @@ class PayoutRegistration : BasePayoutAppCompatActivity() {
         var txId : EditText = findViewById(R.id.editResultTxId)
         var refNo : EditText = findViewById(R.id.editResultReferenceNo)
         var resultLayout  : View = findViewById(R.id.id_layout_result_generate_payout)
+        resultLayout.setVisibility(View.GONE)
 
         beneficiaryBankCode =  findViewById(R.id.spinnerPayoutBank)
         payoutMethod = findViewById(R.id.spinnerPayoutMethod)
@@ -40,11 +42,17 @@ class PayoutRegistration : BasePayoutAppCompatActivity() {
         beneficiaryName = findViewById(R.id.editTextBeneficiaryName)
         beneficiaryPhone = findViewById(R.id.editTextBeneficiaryPhone)
         amount = findViewById(R.id.editTextPayoutAmount)
-        reservedDt = findViewById(R.id.editTextReservedDate)
-        reservedTm = findViewById(R.id.editTextReservedTime)
+        reservedDt = findViewById(R.id.textInputReservedDate)
+        reservedTm = findViewById(R.id.textInputReservedTime)
 
         val bankCodeOption = resources.getStringArray(R.array.payoutBankCode)
         val methodOption = resources.getStringArray(R.array.payoutMethod)
+
+        reservedDt.minDate = System.currentTimeMillis()
+
+        val defaultTimer : Calendar = Calendar.getInstance()
+        defaultTimer.add(Calendar.MINUTE, 120)
+        reservedTm.hour = defaultTimer.get(Calendar.HOUR_OF_DAY)
 
         if (beneficiaryBankCode != null && methodOption != null) {
             val BankAdapter = ArrayAdapter(this,
@@ -93,40 +101,64 @@ class PayoutRegistration : BasePayoutAppCompatActivity() {
         }
 
         submit.setOnClickListener {
+            val calendar : Calendar = Calendar.getInstance()
+            val isSameDay = isSameDay(calendar, getDateFromDatePicker(reservedDt))
+            calendar.add(Calendar.MINUTE, 65)
+
             val amountValue : totalAmount = totalAmount.Builder()
                 .setValue(amount.text.toString().trim()+".00")
                 .build()
 
-
             val requestPayoutRegistration = RequestPayoutRegistration(bankSelected, methodSelected,
                 beneficiaryAccountNo.text.toString(), beneficiaryName.text.toString(),
                 beneficiaryPhone.text.toString(),
-                SimpleDateFormat("yyyyMMdd").parse(reservedDt.toString()).toString(),
-                SimpleDateFormat("hhmmss").parse(reservedTm.toString()).toString(),
-                "ref-" + SimpleDateFormat("yyyyMMddhhmmss").format(System.currentTimeMillis())
+                SimpleDateFormat("yyyyMMdd").format(getDateFromDatePicker(reservedDt).time).toString(),
+                SimpleDateFormat("HHmmss").format(getTimeFromTimePicker(reservedTm).time).toString(),
+                "ref-" + SimpleDateFormat("yyyyMMddhhmmss").format(System.currentTimeMillis()),
+                amountValue
             )
 
             lifecycleScope.launch {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     if (beneficiaryAccountNo.text.toString() == "" || beneficiaryName.text.toString() == ""
                         || beneficiaryPhone.text.toString() == "")
-                        Toast.makeText(applicationContext, "Amount must not be empty", Toast.LENGTH_SHORT).show()
-                    else {
+                        Toast.makeText(applicationContext, "Beneficiary Account, Beneficiary Name and Amount must not be empty", Toast.LENGTH_SHORT).show()
+                    else if (isSameDay && getTimeFromTimePicker(reservedTm).before(calendar)) {
+                        Toast.makeText(applicationContext, "Please input reserved time more than 1 hour and 5 minute for today date", Toast.LENGTH_SHORT).show()
+                    } else {
                         Log.i(this.toString() + " Response : ",
                             parseValue(payoutService.register(requestPayoutRegistration)).toString())
 
-                        val responseMessage = responseRest.get("").toString()
+                        val responseMessage = responseRest.get("responseMessage").toString()
                         if (responseMessage.equals("Successful")) {
                             refNo.setText(responseRest.get("partnerReferenceNo"))
                             txId.setText(responseRest.get("originalReferenceNo"))
 
                             resultLayout.setVisibility(View.VISIBLE)
-                        }
-
+                        } else Toast.makeText(applicationContext, "Failed to register payout. This might caused by amount limit. Please raise up amount value", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
 
+    }
+
+    fun isSameDay(cal1: Calendar, cal2: Calendar): Boolean {
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH) &&
+                cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH)
+    }
+
+    private fun getDateFromDatePicker(datePicker: DatePicker): Calendar {
+        val calendar = Calendar.getInstance()
+        calendar.set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
+        return calendar
+    }
+
+    private fun getTimeFromTimePicker(timePicker: TimePicker): Calendar {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, timePicker.hour)
+        calendar.set(Calendar.MINUTE, timePicker.minute)
+        return calendar
     }
 }

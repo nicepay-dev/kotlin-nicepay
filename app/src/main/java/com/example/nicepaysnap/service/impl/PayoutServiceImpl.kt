@@ -38,7 +38,7 @@ class PayoutServiceImpl : TokenUtil(), MethodService<RequestPayoutRegistration, 
         val dateFormated = SimpleDateFormat("yyyyMMddhhmmssXXX").format(System.currentTimeMillis())
         Log.i("dateFormated = ", dateFormated)
 
-        val stringToHash = "POST:"+ utilInfo.ewalletEndPointUrl + ":" + accTok + ":" + hashBody + ":" + dateTime
+        val stringToHash = "POST:"+ utilInfo.payoutEndPointUrl + ":" + accTok + ":" + hashBody + ":" + dateTime
         Log.e("Before", stringToHash)
         val afterHash = encrypt.hmacSha512encodeBase64(utilInfo.secretKey, stringToHash)
         Log.e("After", afterHash.toString())
@@ -56,9 +56,9 @@ class PayoutServiceImpl : TokenUtil(), MethodService<RequestPayoutRegistration, 
             Log.e("response code : ", it?.responseCode.toString())
             if (it?.responseCode != null) {
                 responsePayout = it?.toMap(HashMap()) as HashMap<String, String>
-                Log.e("responseEWTes :", responsePayout.toString())
+                Log.e("responsePayoutTes :", responsePayout.toString())
             } else {
-                Log.e("error :","Error registering e-wallet")
+                Log.e("error :","Error registering payout")
             }
         }
         while(responsePayout.isEmpty()){

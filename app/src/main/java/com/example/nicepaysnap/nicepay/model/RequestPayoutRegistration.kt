@@ -13,19 +13,19 @@ class RequestPayoutRegistration {
 
     var merchantId : String? = "IONPAYTEST"
     var msId : String? = ""
-    var beneficiaryCustomerResidence : String? = "Testing beneficiaryCustomerResidence"
-    var beneficiaryCustomerType : String? = "Testing beneficiaryCustomerType"
-    var beneficiaryPostalCode : String? = "Testing beneficiaryPostalCode"
+    var beneficiaryCustomerResidence : String? = "1"
+    var beneficiaryCustomerType : String? = "1"
+    var beneficiaryPostalCode : String? = "12345"
     var partnerReferenceNo : String? = "reference-test"
-    var deliveryId : String? = "Testing deliveryId"
-    var deliveryName : String? = "Testing deliveryName"
+    var deliveryId : String? = ""
+    var deliveryName : String? = ""
     var description : String? = "Testing description"
     var beneficiaryPOE : String? = "Testing beneficiaryPOE"
-    var beneficiaryDOE : String? = "Testing beneficiaryDOE"
-    var beneficiaryCoNo : String? = "Testing beneficiaryCoNo"
+    var beneficiaryDOE : String? = "220101"
+    var beneficiaryCoNo : String? = "12345JP"
     var beneficiaryAddress : String? = "Testing beneficiaryAddress"
-    var beneficiaryAuthPhoneNumber : String? = "Testing beneficiaryAuthPhoneNumber"
-    var beneficiaryMerCategory : String? = "Testing beneficiaryMerCategory"
+    var beneficiaryAuthPhoneNumber : String? = "123"
+    var beneficiaryMerCategory : String? = "1"
     var beneficiaryCoMgmtName : String? = "beneficiaryCoMgmtName"
     var beneficiaryCoShName : String? = "beneficiaryCoShName"
 
@@ -38,7 +38,8 @@ class RequestPayoutRegistration {
         beneficiaryPhone: String?,
         reservedDt: String?,
         reservedTm: String?,
-        partnerReferenceNo : String?
+        partnerReferenceNo : String?,
+        amount : totalAmount
     ) {
         this.beneficiaryBankCode = beneficiaryBankCode
         this.payoutMethod = payoutMethod
@@ -48,6 +49,9 @@ class RequestPayoutRegistration {
         this.reservedDt = reservedDt
         this.reservedTm = reservedTm
         this.partnerReferenceNo = partnerReferenceNo
+        this.amount = amount
+
+        if (payoutMethod != "0") this.beneficiaryCustomerType = payoutMethod
     }
 
     constructor(

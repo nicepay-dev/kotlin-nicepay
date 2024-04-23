@@ -58,16 +58,6 @@
                         android:textColor="#FFEB3B" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
-                <EditText
-                        android:id="@+id/editResultValidityPeriod"
-                        style="@style/modifiedEditText"
-                        android:enabled="false"
-                        android:inputType="none"
-                        android:maxLines="1"
-                        android:textColor="#FFEB3B" />
-
             <TextView
                     style="@style/normalTextPrimary"
                     android:layout_marginTop="@dimen/loginViewsMargin"

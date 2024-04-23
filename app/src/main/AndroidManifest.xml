@@ -29,6 +29,9 @@
             android:name=".view.qris.QrisMenu"
             android:exported="false" />
         <activity
+            android:name=".view.payout.PayoutMenu"
+            android:exported="false" />
+        <activity
             android:name=".view.qris.QrisRegistration"
             android:exported="false" />
         <activity
@@ -45,6 +48,15 @@
             android:exported="false" />
         <activity
             android:name=".view.ewallet.EwalletRefund"
+            android:exported="false" />
+        <activity
+            android:name=".view.payout.PayoutRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".view.payout.PayoutInquiry"
+            android:exported="false" />
+        <activity
+            android:name=".view.payout.PayoutCancel"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

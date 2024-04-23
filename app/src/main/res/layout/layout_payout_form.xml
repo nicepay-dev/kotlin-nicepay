@@ -49,7 +49,7 @@
             <EditText
                     android:id="@+id/editTextBeneficiaryAccountNo"
                     style="@style/modifiedEditText"
-                    android:inputType="textEmailAddress"
+                    android:inputType="number|none"
                     android:maxLines="1"
                     android:hint="@string/payout_beneficiary_no"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -92,29 +92,33 @@
                     android:hint="@string/payout_beneficiary_phone"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputReservedDate"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin">
-            <EditText
-                    android:id="@+id/editTextReservedDate"
-                    style="@style/modifiedEditText"
-                    android:inputType="date"
-                    android:maxLines="1"
-                    android:hint="@string/payout_reserved_date"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+                style="@style/normalTextPrimary"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:gravity="left"
+                android:text="Select Reserved Date"
+                android:textAlignment="gravity" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <DatePicker
+                android:id="@+id/textInputReservedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:calendarViewShown="false"
+                android:minDate="today"/>
+
+        <TextView
+                style="@style/normalTextPrimary"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:gravity="left"
+                android:text="Select Reserved Time"
+                android:textAlignment="gravity" />
+
+        <TimePicker
                 android:id="@+id/textInputReservedTime"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin">
-            <EditText
-                    android:id="@+id/editTextReservedTime"
-                    style="@style/modifiedEditText"
-                    android:inputType="time"
-                    android:maxLines="1"
-                    android:hint="@string/payout_reserved_time"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:timePickerMode="spinner"/>
 
         <Button
                 android:id="@+id/submitButton"

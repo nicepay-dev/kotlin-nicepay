@@ -16,21 +16,21 @@ class PayoutMenu : BaseMenuAppCompatActivity() {
 
         register.setOnClickListener {
 
-            val page = Intent(this, QrisRegistration::class.java)
+            val page = Intent(this, PayoutRegistration::class.java)
             startActivity(page)
 
         }
 
         inquiry.setOnClickListener {
 
-            val page = Intent(this, QrisInquiry::class.java)
+            val page = Intent(this, PayoutInquiry::class.java)
             startActivity(page)
 
         }
 
         refund.setOnClickListener {
 
-            val page = Intent(this, QrisRefund::class.java)
+            val page = Intent(this, PayoutCancel::class.java)
             startActivity(page)
 
         }

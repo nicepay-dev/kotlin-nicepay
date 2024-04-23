@@ -44,6 +44,6 @@ interface requestService {
 
     @Headers("Content-Type: application/json")
     @POST("api/v1.0/transfer/registration")
-    fun generatePayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutRegistration): Call<ResponseQrisSnap>;
+    fun generatePayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutRegistration): Call<ResponsePayoutSnap>;
 
 }
