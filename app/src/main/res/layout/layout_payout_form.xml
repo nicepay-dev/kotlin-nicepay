@@ -50,6 +50,7 @@
                     android:id="@+id/editTextBeneficiaryAccountNo"
                     style="@style/modifiedEditText"
                     android:inputType="number|none"
+                    android:digits="0123456789"
                     android:maxLines="1"
                     android:hint="@string/payout_beneficiary_no"/>
         </com.google.android.material.textfield.TextInputLayout>

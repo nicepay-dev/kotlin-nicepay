@@ -43,6 +43,9 @@ class utilInformation {
     var payoutRejectEndPointUrl : String = "/api/v1.0/transfer/rejectl"
         private set
 
+    var payoutCheckBalanceEndPointUrl : String = "/api/v1.0/transfer/balance-inquiry"
+        private set
+
     var clientKey : String = "IONPAYTEST"
         private set
 

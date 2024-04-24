@@ -236,4 +236,24 @@ class restApiService {
         )
     }
 
+
+    fun checkStatusPayout(headers: Map<String, String>, request: RequestPayoutInquiry, onResult: (ResponseInquiryPayoutSnap?) -> Unit){
+        val retrofit = retrofitClient.buildService(requestService::class.java)
+
+        Log.e("body request", Gson().toJson(request))
+        retrofit.inquiryPayout(headers, request).enqueue(
+            object : Callback<ResponseInquiryPayoutSnap> {
+                override fun onFailure(call: Call<ResponseInquiryPayoutSnap>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<ResponseInquiryPayoutSnap>, response: Response<ResponseInquiryPayoutSnap>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
+                    val vaNumber = response.body()
+                    onResult(vaNumber)
+                }
+            }
+        )
+    }
 }

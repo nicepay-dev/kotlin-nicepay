@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   style="@style/loginCard"
+                                   android:layout_gravity="center"
+                                   android:layout_marginTop="@dimen/loginViewsMargin"
+                                   android:layout_marginBottom="@dimen/loginViewsMargin"
+                                   android:background="@color/whiteCardColor"
+                                   android:elevation="5dp"
+                                   app:cardCornerRadius="@dimen/loginCardRadius">
+
+    <ScrollView style="@style/parent">
+
+        <LinearLayout
+                style="@style/linearParent"
+                android:layout_gravity="center"
+                android:padding="@dimen/loginViewsMargin">
+
+            <TextView
+                    style="@style/headerTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:text="Inquiry Result" />
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Original Reference No (txId)"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultTxId"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editResultTxId"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Original Partner Reference No"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultReferenceNo"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editResultReferenceNo"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Response Code"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultResponseCode"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editResponseCode"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Response Message"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultResponseMessage"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editResponseMessage"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Beneficiary Account No"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultBeneficiaryAccountNo"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editBeneficiaryAccountNo"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Beneficiary Name"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultBeneficiaryName"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editBeneficiaryName"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Beneficiary Bank Code"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultBeneficiaryBankCode"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editBeneficiaryBankCode"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Beneficiary Customer Residence"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultBeneficiaryCustomerResidence"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editBeneficiaryCustomerResidence"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Beneficiary Customer Type"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultBeneficiaryCustomerType"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editBeneficiaryCustomerType"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Transaction Amount"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultAmountValue"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editAmountValue"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Transaction Date"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultTransactionDate"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editTransactionDate"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Latest Transaction Status"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultLatestTransactionStatus"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editLatestTransactionStatus"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    style="@style/normalTextPrimary"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:gravity="left"
+                    android:text="Transaction Status Desc"
+                    android:textAlignment="gravity" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/resultTransactionStatusDesc"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+                <EditText
+                        android:id="@+id/editTransactionStatusDesc"
+                        style="@style/modifiedEditText"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:textColor="#FFEB3B" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.cardview.widget.CardView>

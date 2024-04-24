@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/loginCard"
+        app:cardCornerRadius="@dimen/loginCardRadius"
+        android:elevation="5dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/loginViewsMargin"
+        android:layout_marginBottom="@dimen/loginViewsMargin"
+        android:background="@color/whiteCardColor">
+
+
+
+    <LinearLayout
+            style="@style/linearParent"
+            android:layout_gravity="center"
+            android:padding="@dimen/loginViewsMargin">
+
+        <TextView
+                android:id="@+id/textHeader"
+                style="@style/headerTextPrimary"
+                android:text="Payout"
+                android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputTxId"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editTxId"
+                    style="@style/modifiedEditText"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:hint="@string/ewallet_tx_id"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputRefNo"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editReferenceNo"
+                    style="@style/modifiedEditText"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:hint="@string/ewallet_reference_no"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputMerchantId"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editTextMerchantId"
+                    style="@style/modifiedEditText"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:hint="@string/qris_merchant_id"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputBeneficiaryAccountNo"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+            <EditText
+                    android:id="@+id/editTexBeneficiaryAccountNo"
+                    style="@style/modifiedEditText"
+                    android:inputType="number|none"
+                    android:digits="0123456789"
+                    android:maxLines="1"
+                    android:hint="@string/payout_beneficiary_no"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+                android:id="@+id/submitButton"
+                style="@style/loginButton"
+                android:textColor="#fff"
+                android:text="Check Status"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/loginViewsMargin"/>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -11,4 +11,6 @@ open class BasePayoutAppCompatActivity : BaseAppCompatActivity() {
     var payoutService : MethodService<RequestPayoutRegistration, RequestPayoutInquiry, RequestPayoutCancel>
     = PayoutServiceImpl()
 
+    val DEFAULT_MERCHANT_ID = "IONPAYTEST"
+
 }

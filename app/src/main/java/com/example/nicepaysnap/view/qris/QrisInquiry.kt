@@ -58,7 +58,7 @@ class QrisInquiry : BaseQrisAppCompatActivity() {
 
         submit.setOnClickListener {
             if (storeId.text.toString() == "") storeId.setText(DEFAULT_STORE_ID)
-            if (merchantId.text.toString() == "") storeId.setText(DEFAULT_MERCHANT_ID)
+            if (merchantId.text.toString() == "") merchantId.setText(DEFAULT_MERCHANT_ID)
 
             if (inputOriginalReferenceNo.text.toString() == ""
                 || inputPartnerReferenceNo.text.toString() == "") {
