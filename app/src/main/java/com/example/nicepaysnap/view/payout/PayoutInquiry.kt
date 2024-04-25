@@ -12,12 +12,13 @@ import com.example.nicepaysnap.R
 import com.example.nicepaysnap.nicepay.model.RequestPayoutInquiry
 import kotlinx.coroutines.launch
 
-class PayoutInquiry : BasePayoutAppCompatActivity() {
+open class PayoutInquiry : BasePayoutAppCompatActivity() {
 
     lateinit var inputOriginalReferenceNo : EditText
     lateinit var inputPartnerReferenceNo : EditText
     lateinit var inputBeneficiaryAccountNo : EditText
     lateinit var merchantId: EditText
+    lateinit var resultLayout  : View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +27,10 @@ class PayoutInquiry : BasePayoutAppCompatActivity() {
         inputOriginalReferenceNo = findViewById(R.id.editTxId)
         inputPartnerReferenceNo = findViewById(R.id.editReferenceNo)
         inputBeneficiaryAccountNo = findViewById(R.id.editTexBeneficiaryAccountNo)
-        inputBeneficiaryAccountNo.visibility = View.VISIBLE
+        merchantId = findViewById(R.id.editTextMerchantId)
+        merchantId.setText(DEFAULT_MERCHANT_ID)
 
-        var resultLayout  : View = findViewById(R.id.id_layout_result_payout_inquiry)
+        resultLayout = findViewById(R.id.id_layout_result_payout_inquiry)
         resultLayout.setVisibility(View.GONE)
 
         var responseCode : EditText = findViewById(R.id.editResponseCode)
@@ -51,11 +53,6 @@ class PayoutInquiry : BasePayoutAppCompatActivity() {
         buttonCloseLayout.setOnClickListener {
             super.onBackPressed()
         }
-
-        inputOriginalReferenceNo = findViewById(R.id.editTxId)
-        inputPartnerReferenceNo = findViewById(R.id.editReferenceNo)
-        merchantId = findViewById(R.id.editTextMerchantId)
-        merchantId.setText(DEFAULT_MERCHANT_ID)
 
         submit.setOnClickListener {
             if (merchantId.text.toString() == "") merchantId.setText(DEFAULT_MERCHANT_ID)
@@ -91,7 +88,7 @@ class PayoutInquiry : BasePayoutAppCompatActivity() {
                             transactionStatusDesc.setText(
                                 responseRest.get("transactionStatusDesc").toString()
                             )
-                            amountValue.setText(responseRest.get("amountValue").toString())
+                            amountValue.setText(responseRest.get("amount").toString())
                             beneficiaryAccountNo.setText(responseRest.get("beneficiaryAccountNo").toString())
                             beneficiaryName.setText(responseRest.get("beneficiaryName").toString())
                             beneficiaryBankCode.setText(responseRest.get("beneficiaryBankCode").toString())
@@ -100,6 +97,11 @@ class PayoutInquiry : BasePayoutAppCompatActivity() {
                             transactionDate.setText(responseRest.get("transactionDate").toString())
 
                             resultLayout.setVisibility(View.VISIBLE)
+                        } else {
+                            Toast.makeText(applicationContext, "Response Inquiry : " +
+                                    responseRest.get("responseMessage").toString() + ", Response Code : "
+                                    + responseRest.get("responseCode").toString(), Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }

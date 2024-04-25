@@ -50,4 +50,8 @@ interface requestService {
     @POST("api/v1.0/transfer/inquiry")
     fun inquiryPayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutInquiry): Call<ResponseInquiryPayoutSnap>;
 
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/transfer/balance-inquiry")
+    fun checkBalancePayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutCheckBalance): Call<ResponseCheckBalancePayoutSnap>;
+
 }

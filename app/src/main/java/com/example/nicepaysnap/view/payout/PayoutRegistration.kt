@@ -135,7 +135,7 @@ class PayoutRegistration : BasePayoutAppCompatActivity() {
                             txId.setText(responseRest.get("originalReferenceNo"))
 
                             resultLayout.setVisibility(View.VISIBLE)
-                        } else Toast.makeText(applicationContext, "Failed to register payout. This might caused by amount limit. Please raise up amount value", Toast.LENGTH_SHORT).show()
+                        } else Toast.makeText(applicationContext, "Failed to register payout. This might caused by amount limit and balance. Please adjust amount value", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

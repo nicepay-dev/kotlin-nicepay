@@ -1,8 +1,7 @@
 package com.example.nicepaysnap.nicepay.model
 
-open class BaseSnapRequestInquiry {
+open class BaseSnapRequestInquiry : BaseRequestMerchantSnap {
 
-    var merchantId: String? = "IONPAYTEST"
     var originalPartnerReferenceNo: String? = ""
     var originalReferenceNo: String? = ""
 

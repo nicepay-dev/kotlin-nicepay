@@ -256,4 +256,24 @@ class restApiService {
             }
         )
     }
+
+    fun checkBalancePayout(headers: Map<String, String>, request: RequestPayoutCheckBalance, onResult: (ResponseCheckBalancePayoutSnap?) -> Unit) {
+        val retrofit = retrofitClient.buildService(requestService::class.java)
+
+        Log.e("body request", Gson().toJson(request))
+        retrofit.checkBalancePayout(headers, request).enqueue(
+            object : Callback<ResponseCheckBalancePayoutSnap> {
+                override fun onFailure(call: Call<ResponseCheckBalancePayoutSnap>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<ResponseCheckBalancePayoutSnap>, response: Response<ResponseCheckBalancePayoutSnap>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
+                    val vaNumber = response.body()
+                    onResult(vaNumber)
+                }
+            }
+        )
+    }
 }

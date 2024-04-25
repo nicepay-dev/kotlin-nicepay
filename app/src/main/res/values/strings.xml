@@ -17,8 +17,8 @@
     <string name="qris_billing_name">Billing Name</string>
     <string name="qris_merchant_id">Merchant Id</string>
     <string name="qris_store_id">Store Id</string>
-    <string name="ewallet_tx_id">Reference Transaction Id (Original PartnerReference No)</string>
-    <string name="ewallet_reference_no">Partner Reference No (Original Reference No)</string>
+    <string name="ewallet_tx_id">Reference Transaction Id (Original Reference No)</string>
+    <string name="ewallet_reference_no">Partner Reference No (Original Partner Reference No)</string>
     <string name="ewallet_refund_reason">Reason to Refund</string>
     <string name="ewallet_amount">Amount</string>
     <string name="signup_login_hint">Already have an account? Sign In</string>
@@ -32,6 +32,7 @@
     <string name="register">REGISTER</string>
     <string name="inquiry">CHECK STATUS</string>
     <string name="refund">Refund</string>
+    <string name="check_balance">Check Balance</string>
 
     <string-array name="bankCode">
         <item>BRIN</item>
