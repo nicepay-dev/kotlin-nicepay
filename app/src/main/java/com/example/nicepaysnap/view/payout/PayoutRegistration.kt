@@ -34,7 +34,7 @@ class PayoutRegistration : BasePayoutAppCompatActivity() {
     lateinit var approval : EApproval
 
     var bankSelected : String? = "Select Payout Bank"
-    var methodSelected : String? = "Select Payout Bank"
+    var methodSelected : String? = "Select Payout Method"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
