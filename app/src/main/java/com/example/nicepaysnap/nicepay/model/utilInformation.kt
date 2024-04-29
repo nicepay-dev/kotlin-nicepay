@@ -40,7 +40,7 @@ class utilInformation {
     var payoutApproveEndPointUrl : String = "/api/v1.0/transfer/approve"
         private set
 
-    var payoutRejectEndPointUrl : String = "/api/v1.0/transfer/rejectl"
+    var payoutRejectEndPointUrl : String = "/api/v1.0/transfer/reject"
         private set
 
     var payoutCheckBalanceEndPointUrl : String = "/api/v1.0/transfer/balance-inquiry"

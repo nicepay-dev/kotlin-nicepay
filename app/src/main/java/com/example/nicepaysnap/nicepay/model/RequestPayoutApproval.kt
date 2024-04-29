@@ -1,4 +1,12 @@
 package com.example.nicepaysnap.nicepay.model
 
-class RequestPayoutApproval : BaseSnapRequestInquiry() {
+class RequestPayoutApproval : BaseSnapRequestInquiry {
+
+    constructor() : super()
+    constructor(originalPartnerReferenceNo: String?, originalReferenceNo: String?) : super(
+        originalPartnerReferenceNo,
+        originalReferenceNo
+    )
+
+
 }

@@ -6,8 +6,14 @@ open class BaseSnapRequestInquiry : BaseRequestMerchantSnap {
     var originalReferenceNo: String? = ""
 
     constructor()
+
     constructor(merchantId: String?, originalPartnerReferenceNo: String?, originalReferenceNo: String?) {
         this.merchantId = merchantId
+        this.originalPartnerReferenceNo = originalPartnerReferenceNo
+        this.originalReferenceNo = originalReferenceNo
+    }
+
+    constructor(originalPartnerReferenceNo: String?, originalReferenceNo: String?) : super() {
         this.originalPartnerReferenceNo = originalPartnerReferenceNo
         this.originalReferenceNo = originalReferenceNo
     }

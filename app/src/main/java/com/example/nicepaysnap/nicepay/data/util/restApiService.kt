@@ -1,6 +1,7 @@
 package com.example.nicepaysnap.nicepay.data.util
 
 import android.util.Log
+import com.example.nicepaysnap.nicepay.data.enumeration.EApproval
 import com.example.nicepaysnap.nicepay.model.*
 import com.google.gson.Gson
 import retrofit2.Call
@@ -272,6 +273,43 @@ class restApiService {
                     response.errorBody()?.let { Log.e("Error Response", it.string()) }
                     val vaNumber = response.body()
                     onResult(vaNumber)
+                }
+            }
+        )
+    }
+
+    fun approvalPayout(headers: Map<String, String>, request: RequestPayoutApproval, approval : EApproval, onResult: (ResponseApprovalPayoutSnap?) -> Unit) {
+        val retrofit = retrofitClient.buildService(requestService::class.java)
+
+        Log.e("body request", Gson().toJson(request))
+        Log.i("eApproval", approval.toString())
+
+        if (approval.equals(EApproval.APPROVE))
+            retrofit.approvePayout(headers, request).enqueue(
+                object : Callback<ResponseApprovalPayoutSnap> {
+                    override fun onFailure(call: Call<ResponseApprovalPayoutSnap>, t: Throwable) {
+                        onResult(null)
+                    }
+                    override fun onResponse( call: Call<ResponseApprovalPayoutSnap>, response: Response<ResponseApprovalPayoutSnap>) {
+                        Log.e("error", response.toString())
+                        Log.e("error", response.body().toString())
+                        response.errorBody()?.let { Log.e("Error Response", it.string()) }
+                        val response = response.body()
+                        onResult(response)
+                    }
+                }
+            )
+        else retrofit.rejectPayout(headers, request).enqueue(
+            object : Callback<ResponseApprovalPayoutSnap> {
+                override fun onFailure(call: Call<ResponseApprovalPayoutSnap>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<ResponseApprovalPayoutSnap>, response: Response<ResponseApprovalPayoutSnap>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
+                    val response = response.body()
+                    onResult(response)
                 }
             }
         )

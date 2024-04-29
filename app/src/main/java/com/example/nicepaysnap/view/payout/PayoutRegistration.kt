@@ -7,13 +7,17 @@ import android.view.View
 import android.widget.*
 import androidx.lifecycle.lifecycleScope
 import com.example.nicepaysnap.R
-import com.example.nicepaysnap.nicepay.model.RequestPayoutRegistration
-import com.example.nicepaysnap.nicepay.model.totalAmount
+import com.example.nicepaysnap.nicepay.data.enumeration.EApproval
+import com.example.nicepaysnap.nicepay.model.*
+import com.example.nicepaysnap.service.ApprovalService
+import com.example.nicepaysnap.service.impl.PayoutApprovalServiceImpl
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PayoutRegistration : BasePayoutAppCompatActivity() {
+
+    var approvalService : ApprovalService<RequestPayoutApproval, RequestPayoutCheckBalance> = PayoutApprovalServiceImpl()
 
     lateinit var beneficiaryBankCode : Spinner
     lateinit var payoutMethod : Spinner
@@ -23,6 +27,11 @@ class PayoutRegistration : BasePayoutAppCompatActivity() {
     lateinit var amount : EditText
     lateinit var reservedDt : DatePicker
     lateinit var reservedTm : TimePicker
+
+    lateinit var approveBtn: Button
+    lateinit var rejectBtn: Button
+
+    lateinit var approval : EApproval
 
     var bankSelected : String? = "Select Payout Bank"
     var methodSelected : String? = "Select Payout Bank"
@@ -44,6 +53,9 @@ class PayoutRegistration : BasePayoutAppCompatActivity() {
         amount = findViewById(R.id.editTextPayoutAmount)
         reservedDt = findViewById(R.id.textInputReservedDate)
         reservedTm = findViewById(R.id.textInputReservedTime)
+
+        approveBtn = findViewById(R.id.buttonApprove)
+        rejectBtn = findViewById(R.id.buttonReject)
 
         val bankCodeOption = resources.getStringArray(R.array.payoutBankCode)
         val methodOption = resources.getStringArray(R.array.payoutMethod)
@@ -136,6 +148,44 @@ class PayoutRegistration : BasePayoutAppCompatActivity() {
 
                             resultLayout.setVisibility(View.VISIBLE)
                         } else Toast.makeText(applicationContext, "Failed to register payout. This might caused by amount limit and balance. Please adjust amount value", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
+        approveBtn.setOnClickListener {
+            Log.i("Test", "approveBtn clicked")
+            approval = EApproval.APPROVE
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if (txId.text.toString() != "" || refNo.text.toString() != "") {
+
+                    lifecycleScope.launch {
+                        Log.i(
+                            this.toString() + " Response : ",
+                            parseValue(approvalService.approval(RequestPayoutApproval(
+                                refNo.text.toString(), txId.text.toString()), approval)).toString()
+                        )
+                        Toast.makeText(applicationContext, responseRest.get("responseMessage").toString() + " " +
+                                approval.toString(), Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
+
+        rejectBtn.setOnClickListener {
+            Log.i("Test", "rejectBtn clicked")
+            approval = EApproval.REJECT
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if (txId.text.toString() != "" || refNo.text.toString() != "") {
+
+                    lifecycleScope.launch {
+                        Log.i(
+                            this.toString() + " Response : ",
+                            parseValue(approvalService.approval(RequestPayoutApproval(
+                                refNo.text.toString(), txId.text.toString()), approval)).toString()
+                        )
+                        Toast.makeText(applicationContext, responseRest.get("responseMessage").toString() + " " +
+                                approval.toString(), Toast.LENGTH_LONG).show()
                     }
                 }
             }

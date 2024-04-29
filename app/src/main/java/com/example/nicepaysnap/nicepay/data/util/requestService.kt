@@ -54,4 +54,12 @@ interface requestService {
     @POST("api/v1.0/transfer/balance-inquiry")
     fun checkBalancePayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutCheckBalance): Call<ResponseCheckBalancePayoutSnap>;
 
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/transfer/approve")
+    fun approvePayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutApproval): Call<ResponseApprovalPayoutSnap>;
+
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/transfer/reject")
+    fun rejectPayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutApproval): Call<ResponseApprovalPayoutSnap>;
+
 }
