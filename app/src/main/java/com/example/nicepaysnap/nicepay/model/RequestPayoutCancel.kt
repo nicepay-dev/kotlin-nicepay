@@ -1,4 +1,11 @@
 package com.example.nicepaysnap.nicepay.model
 
-class RequestPayoutCancel {
+class RequestPayoutCancel : BaseSnapRequestInquiry {
+
+    constructor()
+    constructor(originalPartnerReferenceNo: String?, originalReferenceNo: String?) : super(
+        originalPartnerReferenceNo,
+        originalReferenceNo
+    )
+
 }

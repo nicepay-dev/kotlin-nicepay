@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.nicepaysnap.R
@@ -19,9 +20,14 @@ class PayoutCheckBalance : BasePayoutApprovalAppCompatActivity() {
     lateinit var merchantId: EditText
     lateinit var resultLayout  : View
 
+    lateinit var textForm : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         determineLayout(R.layout.inquiry_payout)
+
+        textForm = findViewById(R.id.textForm)
+        textForm.setText("Check Balance Payout Form")
 
         inputOriginalReferenceNo = findViewById(R.id.editTxId)
         inputPartnerReferenceNo = findViewById(R.id.editReferenceNo)

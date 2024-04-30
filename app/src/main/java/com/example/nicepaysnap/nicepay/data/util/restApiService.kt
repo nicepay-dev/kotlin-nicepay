@@ -293,9 +293,21 @@ class restApiService {
                     override fun onResponse( call: Call<ResponseApprovalPayoutSnap>, response: Response<ResponseApprovalPayoutSnap>) {
                         Log.e("error", response.toString())
                         Log.e("error", response.body().toString())
-                        response.errorBody()?.let { Log.e("Error Response", it.string()) }
-                        val response = response.body()
-                        onResult(response)
+                        var responseError = "none"
+                        response.errorBody()?.let {
+                            responseError = it.string()
+                        }
+                        Log.e("responseErrorString", responseError)
+
+                        if (response.isSuccessful) onResult(response.body())
+                        else {
+                            var responseErrorMap : Map<String, Any> = HashMap()
+                            responseErrorMap = Gson().fromJson(responseError, responseErrorMap.javaClass)
+                            onResult(ResponseApprovalPayoutSnap(
+                                responseErrorMap.get("responseCode").toString(),
+                                responseErrorMap.get("responseMessage").toString()
+                            ))
+                        }
                     }
                 }
             )
@@ -307,11 +319,57 @@ class restApiService {
                 override fun onResponse( call: Call<ResponseApprovalPayoutSnap>, response: Response<ResponseApprovalPayoutSnap>) {
                     Log.e("error", response.toString())
                     Log.e("error", response.body().toString())
-                    response.errorBody()?.let { Log.e("Error Response", it.string()) }
-                    val response = response.body()
-                    onResult(response)
+                    var responseError = "none"
+                    response.errorBody()?.let {
+                        responseError = it.string()
+                    }
+                    Log.e("responseErrorString", responseError)
+
+                    if (response.isSuccessful) onResult(response.body())
+                    else {
+                        var responseErrorMap : Map<String, Any> = HashMap()
+                        responseErrorMap = Gson().fromJson(responseError, responseErrorMap.javaClass)
+                        onResult(ResponseApprovalPayoutSnap(
+                            responseErrorMap.get("responseCode").toString(),
+                            responseErrorMap.get("responseMessage").toString()
+                        ))
+                    }
                 }
             }
         )
     }
+
+    fun cancelPayout(headers: Map<String, String>, request: RequestPayoutCancel, onResult: (ResponseCancelPayoutSnap?) -> Unit){
+        val retrofit = retrofitClient.buildService(requestService::class.java)
+
+        Log.e("body request", Gson().toJson(request))
+        retrofit.cancelPayout(headers, request).enqueue(
+            object : Callback<ResponseCancelPayoutSnap> {
+                override fun onFailure(call: Call<ResponseCancelPayoutSnap>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<ResponseCancelPayoutSnap>, response: Response<ResponseCancelPayoutSnap>) {
+                    Log.e("error", response.toString())
+                    Log.e("error", response.body().toString())
+
+                    var responseError = "none"
+                    response.errorBody()?.let {
+                        responseError = it.string()
+                    }
+                    Log.e("responseErrorString", responseError)
+
+                    if (response.isSuccessful) onResult(response.body())
+                    else {
+                        var responseErrorMap : Map<String, Any> = HashMap()
+                        responseErrorMap = Gson().fromJson(responseError, responseErrorMap.javaClass)
+                        onResult(ResponseCancelPayoutSnap(
+                            responseErrorMap.get("responseCode").toString(),
+                            responseErrorMap.get("responseMessage").toString()
+                        ))
+                    }
+                }
+            }
+        )
+    }
+
 }

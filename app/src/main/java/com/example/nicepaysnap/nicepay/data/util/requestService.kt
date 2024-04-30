@@ -62,4 +62,8 @@ interface requestService {
     @POST("api/v1.0/transfer/reject")
     fun rejectPayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutApproval): Call<ResponseApprovalPayoutSnap>;
 
+    @Headers("Content-Type: application/json")
+    @POST("api/v1.0/transfer/cancel")
+    fun cancelPayout(@HeaderMap headers: Map<String, String>, @Body requestBody : RequestPayoutCancel): Call<ResponseCancelPayoutSnap>;
+
 }
